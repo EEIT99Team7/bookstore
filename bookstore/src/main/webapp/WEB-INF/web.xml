@@ -3,7 +3,7 @@
 	xmlns="http://xmlns.jcp.org/xml/ns/javaee"
 	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
 	version="3.1">
-	<display-name>LabWebServletHibernateSpring</display-name>
+	<display-name>bookstore</display-name>
 <!--
 	<servlet>
 		<servlet-name>DispatcherServlet</servlet-name>

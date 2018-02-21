@@ -9,20 +9,24 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import model.MemberBean;
+import model.MemberBeanDAO;
 
 @Repository
-public class MemberDAOHibernate {
+public class MemberDAOHibernate implements MemberBeanDAO {
 	@Autowired
 	private SessionFactory sessionFactory;
 
+	@Override
 	public Session getSession() {
 		return sessionFactory.getCurrentSession();
 	}
 	
+	@Override
 	public MemberBean select(Integer id) {
 		return this.getSession().get(MemberBean.class, id);
 	}
 	
+	@Override
 	public MemberBean selectByEmail(String email){
 		Query<MemberBean> query =this.getSession().createQuery("From MemberBean Where email=?", MemberBean.class);
 		query.setParameter(0, email);
@@ -33,6 +37,7 @@ public class MemberDAOHibernate {
 		
 	}
 	
+	@Override
 	public List<MemberBean> select(){
 	
 //		this.getSession().createQuery("select id From MemberBean Where email=?", MemberBean.class);
