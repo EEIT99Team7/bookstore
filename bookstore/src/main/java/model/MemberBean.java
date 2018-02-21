@@ -1,14 +1,18 @@
 package model;
 
-import java.io.*;
-import java.sql.*;
+import java.io.Serializable;
+import java.sql.Blob;
 
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
 // 本類別封裝單筆會員資料
 @Entity
 @Table(name="MEMBER")
 public class MemberBean implements Serializable {
+	private static final long serialVersionUID = 1L;
+	
 	@Id
 	private Integer memId;
 	private String email;
