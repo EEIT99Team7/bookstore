@@ -17,10 +17,10 @@
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="webs/member/login.jsp">登入</a>
+              <a class="nav-link" href="${pageContext.request.contextPath}/webs/member/login.jsp">登入</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">註冊</a>
+              <a class="nav-link" href="${pageContext.request.contextPath}/webs/member/register.jsp">註冊</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="#">聯絡我們</a>

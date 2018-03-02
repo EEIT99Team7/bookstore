@@ -1,7 +1,6 @@
-﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -11,7 +10,7 @@
 <meta name="description" content="">
 <meta name="author" content="">
 
-<title>登入</title>
+<title>註冊</title>
 <!-- Bootstrap core CSS -->
 <link
 	href="${pageContext.request.contextPath}/vendor/bootstrap/css/bootstrap.min.css"
@@ -52,35 +51,34 @@
             text-align: center;
         }
     </style>
-    
- <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            document.getElementById("name").addEventListener("blur", checkName);
-            document.getElementById("pwd").addEventListener("blur", checkpwd);
-        });
-    </script>
 </head>
 <body>
+
 	
 	<!-- 引用共同導覽列 -->
 	<jsp:include page="/webs/nav/top.jsp" />
 	<div class="container">
 		<div id='content'>
-			<Form action="<c:url value='login.do' />" method="POST"	name="loginForm">
-				<legend align="center" >會員登入</legend>
+			<Form action="<c:url value='register.do' />" method="POST"	name="loginForm">
+				<legend align="center" >會員註冊</legend>
 				<fieldset>
 				 
 				 <div class="block">
-                      <label for="name">帳號：</label><input type="text" id="username" autofocus placeholder="請輸入帳號" value="${sessionScope.user}" /><span class="warning" id="nValidate">${ErrorMsgKey.AccountEmptyError}</span><br />
+                      <label for="username">帳號：</label><input type="text" id="username" autofocus placeholder="請輸入帳號" value="${sessionScope.user}" /><span class="warning" id="nValidate">${ErrorMsgKey.AccountEmptyError}</span><br />
                  </div>
                  </hr>
                   <div class="block">
                       <label for="pwd">密碼：</label><input type="password" id="pwd" autofocus placeholder="請輸入密碼" value="${sessionScope.password}" /><span class="warning" id="pValidate">${ErrorMsgKey.PasswordEmptyError} </span><br />
                   </div>
-              
+                   <div class="block">
+                      <label for="pwdcomfirm">確認密碼：</label><input type="password" id="pwdcomfirm" autofocus placeholder="請再次輸入密碼" /><span class="warning" id="pValidate">${ErrorMsgKey.PasswordCheckError} </span><br />
+                  </div>
+                  <div class="block">
+                      <label for="email">E-mail：</label><input type="text" id="email" autofocus placeholder="請輸入email" /><span class="warning" id="mailValidate">${ErrorMsgKey.emailError} </span><br />
+                  </div>
+                  
 				    <div class="sub">
-                                <input type="submit" value="登入" />
-                                <input type="reset" value="清除" />
+                                <input type="submit" value="送出" />
                             </div>
 				 
 				  </fieldset>
@@ -96,6 +94,5 @@
 		src="${pageContext.request.contextPath}/vendor/jquery/jquery.min.js"></script>
 	<script
 		src="${pageContext.request.contextPath}/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-
 </body>
 </html>
