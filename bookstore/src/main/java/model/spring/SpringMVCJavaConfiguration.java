@@ -11,7 +11,7 @@ import org.springframework.web.servlet.config.annotation.ViewResolverRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.springframework.web.servlet.view.XmlViewResolver;
 
-//import misc.DemoHandlerInterceptor;
+
 
 @Configuration
 //@ComponentScan(basePackages={"controller"})

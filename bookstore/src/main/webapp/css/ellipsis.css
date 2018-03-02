@@ -1,0 +1,29 @@
+/* Move down content because we have a fixed navbar that is 3.5rem tall */
+
+.crop-text-4 {
+  -webkit-line-clamp: 4;
+  overflow : hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  
+}
+
+/* .ellip { */
+/*   display: block; */
+/*   height: 100%; */
+/* } */
+
+/* .ellip-line { */
+/*   display: inline-block; */
+/*   text-overflow: ellipsis; */
+/*   white-space: nowrap; */
+/*   word-wrap: normal; */
+/*   max-width: 100%; */
+/* } */
+
+/* .ellip, */
+/* .ellip-line { */
+/*   position: relative; */
+/*   overflow: hidden; */
+/* } */

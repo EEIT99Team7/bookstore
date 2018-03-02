@@ -16,7 +16,7 @@
 <!-- 下列敘述設定變數funcName的值為OUT，top.jsp 會用到此變數 -->
 <c:set var="funcName" value="OUT" scope="session"/>
 <!-- 引入共同的頁首 -->
-<jsp:include page="/fragment/top.jsp" />
+<jsp:include page="/webs/nav/top.jsp" />
 <!-- 下列六行敘述設定登出後要顯示的感謝訊息 -->
 <c:set var="logoutMessage" scope="request"/>
 <font color='blue' ><BR>

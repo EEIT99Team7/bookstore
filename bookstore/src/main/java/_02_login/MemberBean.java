@@ -1,16 +1,21 @@
-package model;
+package _02_login;
 
-import java.io.*;
-import java.sql.*;
+import java.io.Serializable;
+import java.sql.Blob;
 
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
 // 本類別封裝單筆會員資料
 @Entity
 @Table(name="MEMBER")
 public class MemberBean implements Serializable {
+	private static final long serialVersionUID = 1L;
+	
 	@Id
-	private Integer memId;
+	private Integer mempk;
+	private String memId;
 	private String email;
 	private String pw;
 	private String addr;
@@ -22,17 +27,24 @@ public class MemberBean implements Serializable {
 	private String fileName;
 	private Double unpaid_amount;
 	
+	
 	@Override
 	public String toString() {
-		return "MemberBean [memId=" + memId + ", email=" + email + ", pw=" + pw + ", addr=" + addr + ", phone=" + phone
-				+ ", sex=" + sex + ", birthDate=" + birthDate + ", userType=" + userType + ", memberImage=" + memberImage
-				+ ", fileName=" + fileName + ", unpaid_amount=" + unpaid_amount + "]";
-	
+		return "MemberBean [mempk=" + mempk + ", memId=" + memId + ", email=" + email + ", pw=" + pw + ", addr=" + addr
+				+ ", phone=" + phone + ", sex=" + sex + ", birthDate=" + birthDate + ", userType=" + userType
+				+ ", memberImage=" + memberImage + ", fileName=" + fileName + ", unpaid_amount=" + unpaid_amount + "]";
 	}
-	public Integer getMemId() {
+	
+	public Integer getMempk() {
+		return mempk;
+	}
+	public void setMempk(Integer mempk) {
+		this.mempk = mempk;
+	}
+	public String getMemId() {
 		return memId;
 	}
-	public void setMemId(Integer memId) {
+	public void setMemId(String memId) {
 		this.memId = memId;
 	}
 	public String getEmail() {
@@ -41,14 +53,12 @@ public class MemberBean implements Serializable {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	
 	public String getPw() {
 		return pw;
 	}
 	public void setPw(String pw) {
 		this.pw = pw;
 	}
-	
 	public String getAddr() {
 		return addr;
 	}
@@ -79,10 +89,10 @@ public class MemberBean implements Serializable {
 	public void setUserType(String userType) {
 		this.userType = userType;
 	}
-	public Blob getImage() {
+	public Blob getMemberImage() {
 		return memberImage;
 	}
-	public void setImage(Blob memberImage) {
+	public void setMemberImage(Blob memberImage) {
 		this.memberImage = memberImage;
 	}
 	public String getFileName() {
@@ -97,4 +107,6 @@ public class MemberBean implements Serializable {
 	public void setUnpaid_amount(Double unpaid_amount) {
 		this.unpaid_amount = unpaid_amount;
 	}
+	
+	
 }

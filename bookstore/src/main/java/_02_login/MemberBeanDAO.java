@@ -1,10 +1,8 @@
-package model;
+package _02_login;
 
 import java.util.List;
 
 import org.hibernate.Session;
-
-import model.MemberBean;
 
 public interface MemberBeanDAO {
 
