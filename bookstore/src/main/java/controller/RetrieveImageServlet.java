@@ -15,6 +15,7 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.web.context.WebApplicationContext;
 
 import model.AdverBean;
+import model.MemberBean;
 import model.ProductBean;
 import model.dao.GetImageImpl;
 
@@ -74,6 +75,18 @@ public class RetrieveImageServlet extends HttpServlet {
 
 				if (mBean.getCoverImage() != null) {
 					is = mBean.getCoverImage().getBinaryStream();
+				}
+			} else if (type.equalsIgnoreCase("MEMBER")) { // 讀取會員圖片
+				Integer nId = 0;
+				try {
+					nId = Integer.parseInt(id);
+				} catch (NumberFormatException ex) {
+					;
+				}
+				MemberBean mBean = getImageImpl.getMemberImage(nId);
+System.out.println(mBean);
+				if (mBean.getMemberImage() != null) {
+					is = mBean.getMemberImage().getBinaryStream();
 				}
 			}
 			// 由圖片檔的檔名來得到檔案的MIME型態

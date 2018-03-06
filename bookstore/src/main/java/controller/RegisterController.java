@@ -23,7 +23,7 @@ import org.springframework.web.context.support.WebApplicationContextUtils;
 import misc.SystemUtils;
 import model.MemberBean;
 import model.MemberService;
-import model.RegisterServiceDaojdbc;
+import model.dao.RegisterServiceDaojdbc;
 
 @MultipartConfig(location = "", fileSizeThreshold = 5 * 1024 * 1024, maxFileSize = 1024 * 1024
 		* 500, maxRequestSize = 1024 * 1024 * 500 * 5)

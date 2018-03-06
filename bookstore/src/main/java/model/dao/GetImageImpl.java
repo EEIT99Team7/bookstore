@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import model.AdverBean;
+import model.MemberBean;
 import model.ProductBean;
 @Repository
 public class GetImageImpl {
@@ -11,6 +12,8 @@ public class GetImageImpl {
 	AdverDaoJdbc adao;
 	@Autowired
 	ProductDaoJdbc pdao;
+	@Autowired
+	MemberDaoJdbc mdao;
 	
 	public GetImageImpl() {
 	}
@@ -29,6 +32,17 @@ public class GetImageImpl {
 		ProductBean bean = null;
 		try {
 			bean = pdao.queryBookById(Id);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return bean;
+	}
+	//取得會員圖片
+	public MemberBean getMemberImage(Integer Id) {
+		MemberBean bean = null;
+System.out.println("GetImgImpl="+ Id);
+		try {
+			bean = mdao.selectBymemberID(Id);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

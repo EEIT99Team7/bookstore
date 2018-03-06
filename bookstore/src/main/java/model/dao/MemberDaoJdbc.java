@@ -7,6 +7,7 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import model.MemberBean;
 
@@ -19,9 +20,15 @@ public class MemberDaoJdbc {
 	public Session getSession() {
 		return sessionFactory.getCurrentSession();
 	}
-
+	@Transactional(readOnly = true)
 	public MemberBean selectBymemberID(int memberID) {
-		return this.getSession().get(MemberBean.class, memberID);
+System.out.println("selectBymemberID=" + memberID);
+		String sql = "FROM MemberBean WHERE memId = '"+ memberID + "'";
+		
+		MemberBean bean = this.getSession().load(MemberBean.class,memberID);
+//		MemberBean bean = this.getSession().createQuery(sql, MemberBean.class).uniqueResult();
+System.out.println("selectBymemberID  bean = " +bean);
+		return bean;
 	};
 
 	public MemberBean selectByUserName(String UserName) {
@@ -38,5 +45,6 @@ public class MemberDaoJdbc {
 		return list;
 
 	};
-
+	
+	
 }
