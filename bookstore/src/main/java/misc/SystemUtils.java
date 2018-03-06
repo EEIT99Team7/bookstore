@@ -9,6 +9,7 @@ import java.sql.Blob;
 import java.sql.Clob;
 import java.sql.SQLException;
 
+import javax.servlet.http.Part;
 import javax.sql.rowset.serial.SerialBlob;
 import javax.sql.rowset.serial.SerialClob;
 
@@ -49,4 +50,5 @@ public class SystemUtils {
 		Clob clob = new SerialClob(ca);
 		return clob;
 	}
+
 }

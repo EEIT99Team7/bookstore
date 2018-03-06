@@ -20,12 +20,15 @@
             </li>
             <c:if test="${empty LoginOK}">
             <li class="nav-item">
-              <a class="nav-link" href="${pageContext.request.contextPath}/webs/member/login.jsp">登入</a>
+              <a class="nav-link" href="${pageContext.request.contextPath}/webs/login.jsp">登入</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="${pageContext.request.contextPath}/webs/member/register.jsp">註冊</a>
+              <a class="nav-link" href="${pageContext.request.contextPath}/webs/register.jsp">註冊</a>
             </c:if>
             <c:if test="${! empty LoginOK}">
+            <li class="nav-item">
+             <img height='40px' width='30px' src='${pageContext.request.contextPath}/getImage?id=${LoginOK.memId}&type=MEMBER'>
+            </li>
             <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           ${LoginOK.userName}
@@ -34,7 +37,7 @@
           <a class="dropdown-item" href="#">Action</a>
           <a class="dropdown-item" href="#">Another action</a>
           <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="${pageContext.request.contextPath}/webs/member/logout.jsp">登出</a>
+          <a class="dropdown-item" href="${pageContext.request.contextPath}/webs/logout.jsp">登出</a>
         </div>
       </li>
            

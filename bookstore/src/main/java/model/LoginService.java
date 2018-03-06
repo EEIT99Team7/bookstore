@@ -1,26 +1,24 @@
 package model;
 
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import model.dao.MemberDaojdbc;
+import model.dao.MemberDaoJdbc;
 
 @Service
 @Transactional
 public class LoginService {
 
 	@Autowired
-	private MemberDaojdbc memberDao;
+	private MemberDaoJdbc memberDao;
 
-	@Autowired
-	private SessionFactory sessionFactory;
-
-	public Session getSession() {
-		return sessionFactory.getCurrentSession();
-	}
+//	@Autowired
+//	private SessionFactory sessionFactory;
+//
+//	public Session getSession() {
+//		return sessionFactory.getCurrentSession();
+//	}
 
 	// public boolean changePassword(String username, String oldPassword, String
 	// newPassword) {

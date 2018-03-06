@@ -11,7 +11,7 @@ import org.springframework.stereotype.Repository;
 import model.MemberBean;
 
 @Repository
-public class MemberDaojdbc {
+public class MemberDaoJdbc {
 
 	@Autowired
 	private SessionFactory sessionFactory;

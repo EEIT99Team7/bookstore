@@ -44,4 +44,6 @@ public class SpringMVCJavaConfiguration implements WebMvcConfigurer {
 		//註冊 xmlViewResolver
 		registry.viewResolver(viewResolver);
 	}
+	
+
 }
