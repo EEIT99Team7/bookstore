@@ -22,7 +22,7 @@ ApplicationContext context = (ApplicationContext)
 application.getAttribute(WebApplicationContext.ROOT_WEB_APPLICATION_CONTEXT_ATTRIBUTE);
 
 
-MemberDaojdbc memberDao = (MemberDaojdbc) context.getBean("memberDaojdbc");
+MemberDaoJdbc memberDao = (MemberDaoJdbc) context.getBean("memberDaoJdbc");
 
 MemberBean MemberBean = memberDao.selectBymemberID(1);
 List<MemberBean> beanList = memberDao.selectAll();

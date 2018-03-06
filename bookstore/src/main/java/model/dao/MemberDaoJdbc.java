@@ -22,12 +22,8 @@ public class MemberDaoJdbc {
 	}
 	@Transactional(readOnly = true)
 	public MemberBean selectBymemberID(int memberID) {
-System.out.println("selectBymemberID=" + memberID);
 		String sql = "FROM MemberBean WHERE memId = '"+ memberID + "'";
-		
 		MemberBean bean = this.getSession().load(MemberBean.class,memberID);
-//		MemberBean bean = this.getSession().createQuery(sql, MemberBean.class).uniqueResult();
-System.out.println("selectBymemberID  bean = " +bean);
 		return bean;
 	};
 
