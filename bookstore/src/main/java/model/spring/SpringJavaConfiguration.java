@@ -38,17 +38,16 @@ public class SpringJavaConfiguration {
 		Properties props = new Properties();
 		props.setProperty("hibernate.dialect", "org.hibernate.dialect.SQLServerDialect");
 		props.setProperty("hibernate.show_sql", "true");
-		props.setProperty("hibernate.current_session_context_class", "thread");
 		builder.addProperties(props);
 		builder.addAnnotatedClasses(MemberBean.class);
-		
+
 		return builder.buildSessionFactory();
 	}
-	
+
 	@Bean
 	public HibernateTransactionManager transactionManager() {
-		System.out.println("HibernateTransactionManager");
+		
 		return new HibernateTransactionManager(sessionFactory());
 	}
-	
+
 }

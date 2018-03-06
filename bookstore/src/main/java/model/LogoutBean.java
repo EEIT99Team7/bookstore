@@ -1,4 +1,4 @@
-package _02_login.model;
+package model;
 
 import javax.servlet.http.HttpSession;
 
