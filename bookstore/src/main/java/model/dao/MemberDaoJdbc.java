@@ -22,8 +22,7 @@ public class MemberDaoJdbc {
 	}
 	@Transactional(readOnly = true)
 	public MemberBean selectBymemberID(int memberID) {
-		String sql = "FROM MemberBean WHERE memId = '"+ memberID + "'";
-		MemberBean bean = this.getSession().load(MemberBean.class,memberID);
+		MemberBean bean = this.getSession().get(MemberBean.class,memberID);
 		return bean;
 	};
 

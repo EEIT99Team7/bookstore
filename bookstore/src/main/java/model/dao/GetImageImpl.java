@@ -40,7 +40,6 @@ public class GetImageImpl {
 	//取得會員圖片
 	public MemberBean getMemberImage(Integer Id) {
 		MemberBean bean = null;
-System.out.println("GetImgImpl="+ Id);
 		try {
 			bean = mdao.selectBymemberID(Id);
 		} catch (Exception e) {

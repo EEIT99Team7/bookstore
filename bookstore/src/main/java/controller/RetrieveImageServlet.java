@@ -84,7 +84,6 @@ public class RetrieveImageServlet extends HttpServlet {
 					;
 				}
 				MemberBean mBean = getImageImpl.getMemberImage(nId);
-System.out.println(mBean);
 				if (mBean.getMemberImage() != null) {
 					is = mBean.getMemberImage().getBinaryStream();
 				}
