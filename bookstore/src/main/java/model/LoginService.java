@@ -13,25 +13,6 @@ public class LoginService {
 	@Autowired
 	private MemberDaoJdbc memberDao;
 
-//	@Autowired
-//	private SessionFactory sessionFactory;
-//
-//	public Session getSession() {
-//		return sessionFactory.getCurrentSession();
-//	}
-
-	// public boolean changePassword(String username, String oldPassword, String
-	// newPassword) {
-	// MemberBean bean = this.login(username, oldPassword);
-	// if (bean != null) {
-	// if (newPassword != null && newPassword.length() != 0) {
-	// byte[] temp = newPassword.getBytes();
-	// return customerDao.update(temp, bean.getEmail(), bean.getBirth(), username);
-	// }
-	// }
-	// return false;
-	// }
-
 	@Transactional(readOnly = true)
 	public MemberBean login(String username, String password) {
 		MemberBean bean = memberDao.selectByUserName(username);

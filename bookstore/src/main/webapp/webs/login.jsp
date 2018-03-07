@@ -75,8 +75,9 @@
                   </div>
               
 				    <div class="sub">
-                                <input type="submit" value="登入" />
-                                <input type="reset" value="清除" />
+                                <input type="submit" class="btn btn-success btn-block" value="登入" /><br/>
+                                <a href="${pageContext.request.contextPath}/webs/forgot.jsp">忘記密碼?</a><span>&nbsp;&nbsp;|&nbsp;&nbsp;</span>
+                                <a href="${pageContext.request.contextPath}/webs/register.jsp">加入會員</a>
                             </div>
 				 
 				  </fieldset>

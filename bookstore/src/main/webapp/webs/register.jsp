@@ -88,7 +88,7 @@
 					    </div>
 					</div>
 				    <div class="sub">
-                                <input type="submit" value="送出" />
+                                <input type="submit"  class="btn btn-success" value="送出" />
                             </div>
 				 
 				  </fieldset>

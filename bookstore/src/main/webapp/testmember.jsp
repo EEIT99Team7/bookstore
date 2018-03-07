@@ -22,13 +22,22 @@ ApplicationContext context = (ApplicationContext)
 application.getAttribute(WebApplicationContext.ROOT_WEB_APPLICATION_CONTEXT_ATTRIBUTE);
 
 
+// MemberDaoJdbc memberDao = (MemberDaoJdbc) context.getBean("memberDaoJdbc");
+// MemberBean MemberBean = memberDao.selectBymemberID(1);
+// List<MemberBean> beanList = memberDao.selectAll();
+// out.println("<h3>select="+MemberBean+"</h3>");
+
+
+//test forgotpassword
+//1. MemberDaoJdbc
 MemberDaoJdbc memberDao = (MemberDaoJdbc) context.getBean("memberDaoJdbc");
+MemberBean memberBean1 = memberDao.selectBymemberEmail("11@ddd");
+out.println("<h3>1. MemberDaoJdbc  select="+memberBean1+"</h3><br/>");
 
-MemberBean MemberBean = memberDao.selectBymemberID(1);
-List<MemberBean> beanList = memberDao.selectAll();
-
-out.println("<h3>select="+MemberBean+"</h3>");
-
+//2.MemberService
+MemberService memberService = (MemberService) context.getBean("memberService");
+MemberBean memberBean2 = memberService.forgotPassword("11@ddd");
+out.println("<h3>2.MemberService select="+memberBean2+"</h3>");
 
 %>
 

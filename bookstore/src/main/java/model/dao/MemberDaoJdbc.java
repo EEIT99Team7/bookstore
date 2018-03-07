@@ -12,6 +12,7 @@ import org.springframework.transaction.annotation.Transactional;
 import model.MemberBean;
 
 @Repository
+@Transactional
 public class MemberDaoJdbc {
 
 	@Autowired
@@ -20,9 +21,17 @@ public class MemberDaoJdbc {
 	public Session getSession() {
 		return sessionFactory.getCurrentSession();
 	}
+	
 	@Transactional(readOnly = true)
 	public MemberBean selectBymemberID(int memberID) {
 		MemberBean bean = this.getSession().get(MemberBean.class,memberID);
+		return bean;
+	};
+	
+
+	public MemberBean selectBymemberEmail(String email) {
+		String sql = "FROM MemberBean WHERE email = '"+ email + "'";
+		MemberBean bean = this.getSession().createQuery(sql, MemberBean.class).uniqueResult();
 		return bean;
 	};
 

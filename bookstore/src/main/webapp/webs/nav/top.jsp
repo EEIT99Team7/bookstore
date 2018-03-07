@@ -13,9 +13,8 @@
         
 	<!--上方導覽列 -->
           <ul class="navbar-nav ml-auto">
-            <li class="nav-item active">
-              <a class="nav-link" href="${pageContext.request.contextPath}/index.jsp">首頁
-                <span class="sr-only">(current)</span>
+            <li class="nav-item">
+              <a class="nav-link" href="${pageContext.request.contextPath}/index.jsp">首頁<span class="sr-only">(current)</span>
               </a>
             </li>
             <c:if test="${empty LoginOK}">
@@ -27,14 +26,15 @@
             </c:if>
             <c:if test="${! empty LoginOK}">
             <li class="nav-item">
-             <img height='40px' width='30px' src='${pageContext.request.contextPath}/getImage?id=${LoginOK.memId}&type=MEMBER'>
+             
             </li>
             <li class="nav-item dropdown">
+            
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          ${LoginOK.userName}
+          <img height='40px' width='40px' src='${pageContext.request.contextPath}/getImage?id=${LoginOK.memId}&type=MEMBER'>&nbsp;${LoginOK.userName}
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="#">Action</a>
+          <a class="dropdown-item" href="#">會員專區</a>
           <a class="dropdown-item" href="#">Another action</a>
           <div class="dropdown-divider"></div>
           <a class="dropdown-item" href="${pageContext.request.contextPath}/webs/logout.jsp">登出</a>

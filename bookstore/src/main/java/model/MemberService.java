@@ -2,10 +2,47 @@ package model;
 
 import javax.servlet.http.Part;
 
-public class MemberService {
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
-	public static final int    IMAGE_FILENAME_LENGTH = 20;
+import model.dao.MemberDaoJdbc;
+
+
+@Service
+@Transactional
+public class MemberService {
 	
+	@Autowired
+	private MemberDaoJdbc memberDao;
+
+//	@Autowired
+//	private SessionFactory sessionFactory;
+//
+//	public Session getSession() {
+//		return sessionFactory.getCurrentSession();
+//	}
+
+	// public boolean changePassword(String username, String oldPassword, String
+	// newPassword) {
+	// MemberBean bean = this.login(username, oldPassword);
+	// if (bean != null) {
+	// if (newPassword != null && newPassword.length() != 0) {
+	// byte[] temp = newPassword.getBytes();
+	// return customerDao.update(temp, bean.getEmail(), bean.getBirth(), username);
+	// }
+	// }
+	// return false;
+	// }
+
+	
+	
+	
+	
+	
+	
+	public static final int    IMAGE_FILENAME_LENGTH = 20;
+		
 	    // 本方法調整fileName的長度小於或等於maxLength。
 		// 如果fileName的長度小於或等於maxLength，直接傳回fileName
 		// 否則保留最後一個句點與其後的附檔名，縮短主檔名使得fileName的總長度
@@ -31,5 +68,12 @@ public class MemberService {
 			}
 		}
 		return null;
+	}
+	
+
+	public MemberBean forgotPassword(String email) {
+		MemberBean memberBean = memberDao.selectBymemberEmail(email);
+		return memberBean;
+		
 	}
 }
