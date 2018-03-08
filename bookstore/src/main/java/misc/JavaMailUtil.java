@@ -227,7 +227,7 @@ public class JavaMailUtil {
 		props.put("mail.smtp.socketFactory.port", "587");
 		// 聲明要進行STARTTLS加密連線
 		props.put("mail.smtp.starttls.enable", "true");
-		// GMail要求必須要進行身分驗證(Authentication)
+		// 進行身分驗證(Authentication)
 		props.put("mail.smtp.auth", "true");
 		Authenticator au = new javax.mail.Authenticator() {
 			protected PasswordAuthentication getPasswordAuthentication() {

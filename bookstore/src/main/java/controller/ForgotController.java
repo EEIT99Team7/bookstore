@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import model.EmailService;
 import model.MemberBean;
 import model.MemberService;
 
@@ -23,6 +24,9 @@ public class ForgotController {
 	@Autowired
 	private MemberService memberService;
 
+	@Autowired
+	private EmailService emailService;
+
 	@RequestMapping(method = { RequestMethod.GET, RequestMethod.POST })
 	public ModelAndView processForgot(String email, Model model, HttpSession session) {
 
@@ -30,9 +34,9 @@ public class ForgotController {
 		Map<String, String> errorMsgMap = new HashMap<String, String>();
 		// 準備存放註冊成功之訊息的Map物件
 		Map<String, String> msgOK = new HashMap<String, String>();
-		model.addAttribute("ErrorMsgKey", errorMsgMap);//顯示錯誤訊息
-		model.addAttribute("msgOK", msgOK);      //顯示正常訊息
-		
+		model.addAttribute("ErrorMsgKey", errorMsgMap);// 顯示錯誤訊息
+		model.addAttribute("msgOK", msgOK); // 顯示正常訊息
+
 		// 檢查使用者輸入資料
 		// 如果 email 欄位為空白，放一個錯誤訊息到 errorMsgMap 之內
 		if (email == null || email.trim().length() == 0) {
@@ -50,11 +54,16 @@ public class ForgotController {
 		if (memberBean == null) {
 			// NG, email搜尋不到結果，放一個錯誤訊息到 errorMsgMap 之內
 			errorMsgMap.put("EmailNotFoundError", "Email輸入錯誤或是帳號不存在");
-		} 
+		}
 
 		if (errorMsgMap.isEmpty()) {
 			// 如果errorMsgMap是空的，msgOK寫入彈出訊息框
-			msgOK.put("QueryOK", "<script>alert(\"已寄出認證信\");window.location.href = '../index.jsp';</script>");
+			 String result = emailService.sendForgotPasswordEmail(email);
+			// 測試用
+			// String result = "<script>alert(\"已寄出認證信\");window.location.href =
+			// '../index.jsp';</script>";
+			msgOK.put("QueryOK", result);
+
 			// 交棒給forgot，顯示彈出訊息框並回到首頁
 			return new ModelAndView("forgot");
 		} else {

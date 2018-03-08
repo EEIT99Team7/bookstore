@@ -48,12 +48,7 @@
         }
     </style>
     
- <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            document.getElementById("name").addEventListener("blur", checkName);
-            document.getElementById("pwd").addEventListener("blur", checkpwd);
-        });
-    </script>
+
 </head>
 <body>
 	

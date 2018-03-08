@@ -48,17 +48,20 @@ fieldset {
 	max-width: 450px;
 	text-align: center;
 }
+#loadingImg {
+	display:none;
+}
 </style>
 
 </head>
 <body>
 	<!-- 引用共同導覽列 -->
 	<jsp:include page="/webs/nav/top.jsp" />
-${msgOK.QueryOK}
+	<span id ="">${msgOK.QueryOK}</span>
 	<div class="container">
 		<div id='content'>
 			<Form action="<c:url value='forgot.controller' />" method="post"
-				name="forgotForm">
+				name="forgotForm" onsubmit="load()">
 				<legend align="center">忘記密碼</legend>
 				<fieldset>
 
@@ -69,7 +72,8 @@ ${msgOK.QueryOK}
 					</div>
 					</hr>
 					<div class="sub">
-						<input type="submit" class="btn btn-success" value="查詢" />
+						<input type="submit" class="btn btn-success" value="查詢" id="submitquery" />
+						<img height='32px' width='32px' src="${pageContext.request.contextPath}/images/loading.gif" id="loadingImg">
 					</div>
 				</fieldset>
 				<legend align="center"></legend>
@@ -84,6 +88,12 @@ ${msgOK.QueryOK}
 		src="${pageContext.request.contextPath}/vendor/jquery/jquery.min.js"></script>
 	<script
 		src="${pageContext.request.contextPath}/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-
+	<script>
+	var loadingImg = document.getElementById("loadingImg")
+	function load(){
+		this.submitquery.disabled=true
+		loadingImg.style.display="inline";
+	}
+	</script>
 </body>
 </html>
