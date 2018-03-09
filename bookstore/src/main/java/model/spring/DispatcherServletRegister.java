@@ -14,7 +14,7 @@ public class DispatcherServletRegister extends AbstractAnnotationConfigDispatche
 
 	@Override
 	protected String[] getServletMappings() {
-		return new String[] {"*.controller"};
+		return new String[] {"*.controller","/resetpassword"};
 	}
 	
 	@Override

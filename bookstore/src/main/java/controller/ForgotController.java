@@ -15,6 +15,7 @@ import org.springframework.web.servlet.ModelAndView;
 import model.EmailService;
 import model.MemberBean;
 import model.MemberService;
+import model.dao.MemberDaoJdbc;
 
 //忘記密碼 功能
 @Controller
@@ -23,6 +24,9 @@ public class ForgotController {
 
 	@Autowired
 	private MemberService memberService;
+
+	@Autowired
+	private MemberDaoJdbc memberDao;
 
 	@Autowired
 	private EmailService emailService;
@@ -41,35 +45,49 @@ public class ForgotController {
 		// 如果 email 欄位為空白，放一個錯誤訊息到 errorMsgMap 之內
 		if (email == null || email.trim().length() == 0) {
 			errorMsgMap.put("EmailEmptyError", "請輸入Email");
-		}
-		// 如果 errorMsgMap 不是空的，表示有錯誤，交棒給login.jsp
-		if (errorMsgMap != null && !errorMsgMap.isEmpty()) {
 			return new ModelAndView("forgot");
 		}
 
 		// 進行 Business forgot 運算
 		// 呼叫 memberService物件的 forgotPassword()，傳入email
-		MemberBean memberBean = memberService.forgotPassword(email);
+		MemberBean memberBean = memberDao.selectBymemberEmail(email);
 
 		if (memberBean == null) {
 			// NG, email搜尋不到結果，放一個錯誤訊息到 errorMsgMap 之內
 			errorMsgMap.put("EmailNotFoundError", "Email輸入錯誤或是帳號不存在");
+			return new ModelAndView("forgot");
 		}
 
+		// 如果errorMsgMap是空的，表示驗證無誤
 		if (errorMsgMap.isEmpty()) {
-			// 如果errorMsgMap是空的，msgOK寫入彈出訊息框
-			 String result = emailService.sendForgotPasswordEmail(email);
-			// 測試用
-			// String result = "<script>alert(\"已寄出認證信\");window.location.href =
-			// '../index.jsp';</script>";
-			msgOK.put("QueryOK", result);
+			// 檢查resetState，如已經是true 則再寄一次信
+			if (memberBean.getResetState() == true) {
+				String resetId = memberBean.getResetId();
+				// String result = "測試 再寄一次";
+				String result = emailService.sendForgotPasswordEmail(email, resetId);
 
-			// 交棒給forgot，顯示彈出訊息框並回到首頁
-			return new ModelAndView("forgot");
+				// msgOK寫入彈出訊息框
+				msgOK.put("QueryOK", result);
+				// 交棒給forgot，顯示彈出訊息框並回到首頁(由result中的<script>跳轉)
+				return new ModelAndView("forgot");
+
+			} else { // resetState，如股是false， 產生新信件
+
+				// 產生專用url
+				String resetId = memberService.createResetId(email);
+
+				// 用新的resetId寄出信件
+				// String result = "測試 成功寄信";
+				String result = emailService.sendForgotPasswordEmail(email, resetId);
+				// msgOK寫入彈出訊息框
+				msgOK.put("QueryOK", result);
+				// 交棒給forgot，顯示彈出訊息框並回到首頁(由result中的<script>跳轉)
+				return new ModelAndView("forgot");
+			}
+
 		} else {
 			// 如果errorMsgMap不是空的，表示有錯誤，交棒給forgot.fail
 			return new ModelAndView("forgot");
 		}
-
 	}
 }

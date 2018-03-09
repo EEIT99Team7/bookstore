@@ -24,6 +24,10 @@
 	rel="stylesheet">
 <!-- 顯示邊界 調整DIV用 -->
 <style>
+#legend{
+	margin: 1rem auto 1rem;
+	text-align:center;
+}
 fieldset {
 	max-width: 500px;
 	border: 3px solid gray;
@@ -62,7 +66,7 @@ fieldset {
 		<div id='content'>
 			<Form action="<c:url value='forgot.controller' />" method="post"
 				name="forgotForm" onsubmit="load()">
-				<legend align="center">忘記密碼</legend>
+				<h4 id="legend">忘記密碼</h4>
 				<fieldset>
 
 					<div class="block">
