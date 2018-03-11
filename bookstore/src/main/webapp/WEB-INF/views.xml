@@ -3,6 +3,13 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
+	<bean id="index"
+		class="org.springframework.web.servlet.view.RedirectView">
+		<property name="contextRelative" value="true"></property>
+		<property name="url" value="/index.jsp"></property>
+	</bean>
+
+
 	<bean id="login.fail"
 		class="org.springframework.web.servlet.view.InternalResourceView">
 		<property name="url" value="/webs/login.jsp"></property>
@@ -16,6 +23,12 @@
 	<bean id="forgot"
 		class="org.springframework.web.servlet.view.InternalResourceView">
 		<property name="url" value="/webs/forgot.jsp"></property>
+	</bean>
+
+	<bean id="resetPassword"
+		class="org.springframework.web.servlet.view.InternalResourceView">
+		<property name="url" value="/WEB-INF/resetPassword.jsp"></property>
+
 	</bean>
 
 	<bean id="product.error"

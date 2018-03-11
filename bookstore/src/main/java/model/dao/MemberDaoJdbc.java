@@ -64,4 +64,10 @@ public class MemberDaoJdbc {
 		memberBean.setResetState(resetState);
 	}
 	
+	public void updatePassword(String userName, String newPassword) {
+		MemberBean memberBean = this.selectByUserName(userName);
+		memberBean.setPw(newPassword);
+		
+	}
+	
 }
