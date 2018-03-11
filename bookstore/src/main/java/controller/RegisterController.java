@@ -1,5 +1,6 @@
 package controller;
 
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.sql.Blob;
@@ -126,19 +127,28 @@ public class RegisterController extends HttpServlet {
 			if (rs.userNameExists(userName)) {
 				errorMsg.put("errorIDDup", "此帳號已存在，請換新代號");
 			} else {
-				// password =
-				// GlobalService.getMD5Endocing(GlobalService.encryptString(password));
+				// password = GlobalService.getMD5Endocing(GlobalService.encryptString(password));
 				// Timestamp ts = new java.sql.Timestamp(System.currentTimeMillis());
 				
 				Blob blob = null;
 				if(sizeInBytes != 0 && is != null ) {
 					 blob = SystemUtils.fileToBlob(is, sizeInBytes);
 					System.out.println("do filetoblob");
+				}else {
+//					String filepath = getServletContext().getRealPath("/images/default-member-image.png");
+//					
+//					System.out.println(filepath);
+					
+//					if(filepath.exists()) {
+//						System.out.println("有預設圖片");
+//					}else {
+//						System.out.println("找不到預設圖片");
+//					}
 				}
 				
 
 				MemberBean memberBean = new MemberBean(null, userName, email, password, null, null, null, null,
-						"member", blob, fileName, 0.0);
+						"member", blob, fileName, 0.0, false, null);
 
 				int n = rs.addMember(memberBean);
 				if (n == 1) {

@@ -96,7 +96,12 @@ public class RetrieveImageServlet extends HttpServlet {
 			os = response.getOutputStream();
 			// 如果圖片的來源有問題，就送回預設圖片(/images/NoImage.jpg)
 			if (is == null) {
+				//針對會員沒上傳圖片的回傳預設圖片
+				if(type.equalsIgnoreCase("MEMBER")) {
+					is = getServletContext().getResourceAsStream("/images/default-member-image.png");
+				}else { //針對其他沒上傳圖片的回傳
 				is = getServletContext().getResourceAsStream("/images/Noimage.jpg");
+				}
 			}
 			int len = 0;
 			byte[] bytes = new byte[8192];

@@ -29,25 +29,21 @@ public class SystemUtils {
 		sb = new SerialBlob(b);
 		return sb;
 	}
-	public static Blob fileToBlob(String imageFileName) 
-			               throws IOException, SQLException {
+
+	public static Blob fileToBlob(String imageFileName) throws IOException, SQLException {
 		File imageFile = new File(imageFileName);
 		long size = imageFile.length();
 		byte[] b = new byte[(int) size];
 		SerialBlob sb = null;
-		try (
-			FileInputStream fis = new FileInputStream(imageFile);
-		) {
+		try (FileInputStream fis = new FileInputStream(imageFile);) {
 			fis.read(b);
 			sb = new SerialBlob(b);
 		}
 		return sb;
 	}
 
-	public static Clob fileToClob(String textFileName) 
-			                  throws IOException,	SQLException {
-		InputStreamReader isr = new InputStreamReader(
-				      new FileInputStream(textFileName), "UTF-8");
+	public static Clob fileToClob(String textFileName) throws IOException, SQLException {
+		InputStreamReader isr = new InputStreamReader(new FileInputStream(textFileName), "UTF-8");
 		char[] c = new char[8192];
 		StringBuffer buf = new StringBuffer();
 		int len = 0;
@@ -58,38 +54,38 @@ public class SystemUtils {
 		Clob clob = new SerialClob(ca);
 		return clob;
 	}
-	
-	public static final String KEY = "KittySnoopyMicky";  // 16, 24, 32
-	public static String encryptString(String message)  {
-	String encryptedString = "";
-	
-	try {
-		Cipher cipher = Cipher.getInstance("AES/ECB/PKCS5Padding"); 
-		SecretKeySpec secretKey = new SecretKeySpec(KEY.getBytes(), "AES");
-		cipher.init(Cipher.ENCRYPT_MODE, secretKey);
-		encryptedString = DatatypeConverter.printBase64Binary(cipher.doFinal(message.getBytes()));
-	} catch (InvalidKeyException e) {
-		e.printStackTrace();
-	} catch (NoSuchAlgorithmException e) {
-		e.printStackTrace();
-	} catch (NoSuchPaddingException e) {
-		e.printStackTrace();
-	} catch (IllegalBlockSizeException e) {
-		e.printStackTrace();
-	} catch (BadPaddingException e) {
-		e.printStackTrace();
-	}
-	return encryptedString;
+
+	public static final String KEY = "KittySnoopyMicky"; // 16, 24, 32
+
+	public static String encryptString(String message) {
+		String encryptedString = "";
+
+		try {
+			Cipher cipher = Cipher.getInstance("AES/ECB/PKCS5Padding");
+			SecretKeySpec secretKey = new SecretKeySpec(KEY.getBytes(), "AES");
+			cipher.init(Cipher.ENCRYPT_MODE, secretKey);
+			encryptedString = DatatypeConverter.printBase64Binary(cipher.doFinal(message.getBytes()));
+		} catch (InvalidKeyException e) {
+			e.printStackTrace();
+		} catch (NoSuchAlgorithmException e) {
+			e.printStackTrace();
+		} catch (NoSuchPaddingException e) {
+			e.printStackTrace();
+		} catch (IllegalBlockSizeException e) {
+			e.printStackTrace();
+		} catch (BadPaddingException e) {
+			e.printStackTrace();
+		}
+		return encryptedString;
 	}
 
-	
 	public static String getMD5Endocing(String message) {
 		final StringBuffer buffer = new StringBuffer();
 		try {
 			MessageDigest md = MessageDigest.getInstance("MD5");
 			md.update(message.getBytes());
 			byte[] digest = md.digest();
-			
+
 			for (int i = 0; i < digest.length; ++i) {
 				final byte b = digest[i];
 				final int value = (b & 0x7F) + (b < 0 ? 128 : 0);
@@ -102,5 +98,5 @@ public class SystemUtils {
 		}
 		return buffer.toString();
 	}
-	
+
 }
