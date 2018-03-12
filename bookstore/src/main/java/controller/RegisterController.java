@@ -152,7 +152,7 @@ public class RegisterController extends HttpServlet {
 				
 
 				MemberBean memberBean = new MemberBean(null, userName, email, password, null, null, null, null,
-						"member", blob, fileName, 0.0, false, null, nickName);
+						"member", blob, fileName, 0.0, false, null, nickName, null);
 
 				int n = rs.addMember(memberBean);
 				if (n == 1) {
