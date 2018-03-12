@@ -31,15 +31,15 @@ public class MemberBean {
 	private Double unpaid_amount;
 	private Boolean resetState;
 	private String resetId;
+	private String nickName;
 	
 	public MemberBean() {
 		super();
 	}
 
-	
 	public MemberBean(Integer memId, String userName, String email, String pw, String addr, String phone, String sex,
 			Date birthDate, String userType, Blob memberImage, String fileName, Double unpaid_amount,
-			Boolean resetState, String resetId) {
+			Boolean resetState, String resetId, String nickName) {
 		super();
 		this.memId = memId;
 		this.userName = userName;
@@ -55,8 +55,8 @@ public class MemberBean {
 		this.unpaid_amount = unpaid_amount;
 		this.resetState = resetState;
 		this.resetId = resetId;
+		this.nickName = nickName;
 	}
-
 
 
 
@@ -172,12 +172,21 @@ public class MemberBean {
 		this.resetId = resetId;
 	}
 
+	public String getNickName() {
+		return nickName;
+	}
+
+
+	public void setNickName(String nickName) {
+		this.nickName = nickName;
+	}
+
 	@Override
 	public String toString() {
 		return "MemberBean [memId=" + memId + ", userName=" + userName + ", email=" + email + ", pw=" + pw + ", addr="
 				+ addr + ", phone=" + phone + ", sex=" + sex + ", birthDate=" + birthDate + ", userType=" + userType
 				+ ", memberImage=" + memberImage + ", fileName=" + fileName + ", unpaid_amount=" + unpaid_amount
-				+ ", resetState=" + resetState + ", resetId=" + resetId + "]";
+				+ ", resetState=" + resetState + ", resetId=" + resetId + ", nickName=" + nickName + "]";
 	};
 
 	

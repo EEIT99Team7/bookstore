@@ -1,6 +1,5 @@
 package controller;
 
-import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.sql.Blob;
@@ -48,6 +47,7 @@ public class RegisterController extends HttpServlet {
 		String password = "";
 		String password2 = "";
 		String email = "";
+		String nickName = "";
 		String fileName = "";
 		long sizeInBytes = 0;
 		InputStream is = null;
@@ -69,6 +69,8 @@ public class RegisterController extends HttpServlet {
 						password2 = value;
 					} else if (fldName.equalsIgnoreCase("email")) {
 						email = value;
+					}else if (fldName.equalsIgnoreCase("nickName")) {
+						nickName = value;
 					}
 				} else {
 					fileName = MemberService.getFileName(p); // 此為圖片檔的檔名
@@ -101,7 +103,9 @@ public class RegisterController extends HttpServlet {
 			if (email == null || email.trim().length() == 0) {
 				errorMsg.put("errorEmail", "電子郵件欄必須輸入");
 			}
-
+			if (nickName == null || nickName.trim().length() == 0) {
+				errorMsg.put("errorNickName", "暱稱欄必須輸入");
+			}
 		} else {
 			errorMsg.put("errTitle", "此表單不是上傳檔案的表單");
 		}
@@ -148,7 +152,7 @@ public class RegisterController extends HttpServlet {
 				
 
 				MemberBean memberBean = new MemberBean(null, userName, email, password, null, null, null, null,
-						"member", blob, fileName, 0.0, false, null);
+						"member", blob, fileName, 0.0, false, null, nickName);
 
 				int n = rs.addMember(memberBean);
 				if (n == 1) {

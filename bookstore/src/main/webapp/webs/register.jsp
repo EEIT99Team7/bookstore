@@ -25,10 +25,11 @@
 	rel="stylesheet">
 <!-- 顯示邊界 調整DIV用 -->
 <style>
-#legend{
+#legend {
 	margin: 1rem auto 1rem;
-	text-align:center;
+	text-align: center;
 }
+
 fieldset {
 	max-width: 500px;
 	border: 3px solid gray;
@@ -89,7 +90,11 @@ fieldset {
 							autofocus placeholder="請輸入email" /><span class="warning"
 							id="mailValidate">${MsgError.errorEmail} </span><br />
 					</div>
-
+					<div class="block">
+						<label for="email">暱稱：</label><input type="text" name="nickName"
+							autofocus placeholder="請輸入暱稱" /><span class="warning"
+							id="mailValidate">${MsgError.errorNickName} </span><br />
+					</div>
 					<div class="block">
 						<label for="inputimg">請上傳圖片(非必要)：</label> <br />
 						<div class="col-sm-10">
