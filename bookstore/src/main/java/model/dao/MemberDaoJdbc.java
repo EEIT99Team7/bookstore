@@ -70,4 +70,20 @@ public class MemberDaoJdbc {
 		
 	}
 	
+	public void updateEmail(String oldEmail, String newEmail) {
+		MemberBean memberBean = this.selectBymemberEmail(oldEmail);
+		memberBean.setEmail(newEmail);
+	}
+	
+	public void updateMemberDataText(MemberBean newBean) {
+		MemberBean oldBean = this.selectBymemberID(newBean.getMemId());
+		oldBean.setAddr(newBean.getAddr());
+		oldBean.setPhone(newBean.getPhone());   
+		oldBean.setSex(newBean.getSex());
+		oldBean.setBirthDate(newBean.getBirthDate());
+		oldBean.setNickName(newBean.getNickName());
+		oldBean.setDescription(newBean.getDescription());		
+				
+	}
+	
 }

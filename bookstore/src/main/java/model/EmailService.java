@@ -42,4 +42,28 @@ public class EmailService {
 			return "<script>alert(\"信件寄發錯誤，請稍後再試\");</script>";
 		}
 	}
+	
+	public boolean sendChangeEmailConfirm(String email) {
+		to.add(email);
+		subject="會員Email更改認證信函";
+		text = "<p>＊ 此信件為系統發出信件，請勿直接回覆，感謝您的配合。謝謝！＊<br /><br />"+  
+				"親愛的會員 您好：<br /><br />" + 
+				"提醒您，您已經修改Email地址，未來網站相關消息將會直接寄到新的地址，歡迎您隨時回來逛逛。</p>" +
+				"<p><a href=\"http://localhost:8080/bookstore/resetpassword?verify=123d\">"+ 
+				"<span style=\"color: #ff0000;\">按此前往網站</span></a></p>";
+		
+		
+		JavaMailUtil util = new JavaMailUtil(FROM, to, cc, bcc, subject, text, attachment);
+		if (util.send()) {
+			return true;
+			 
+		} else {
+			System.out.println("發信失敗");
+			return false;
+			 
+		}
+		
+	}
+	
+	
 }

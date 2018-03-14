@@ -3,12 +3,15 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-	<bean id="index"
-		class="org.springframework.web.servlet.view.RedirectView">
+	<bean id="index" class="org.springframework.web.servlet.view.RedirectView">
 		<property name="contextRelative" value="true"></property>
 		<property name="url" value="/index.jsp"></property>
 	</bean>
 
+	<bean id="editProfile"
+		class="org.springframework.web.servlet.view.InternalResourceView">
+		<property name="url" value="/webs/member/editprofile.jsp"></property>
+	</bean>
 
 	<bean id="login.fail"
 		class="org.springframework.web.servlet.view.InternalResourceView">
@@ -28,8 +31,14 @@
 	<bean id="resetPassword"
 		class="org.springframework.web.servlet.view.InternalResourceView">
 		<property name="url" value="/WEB-INF/resetPassword.jsp"></property>
-
 	</bean>
+
+	<bean id="changePassword"
+		class="org.springframework.web.servlet.view.InternalResourceView">
+		<property name="url" value="/webs/member/changepassword.jsp"></property>
+	</bean>
+
+
 
 	<bean id="product.error"
 		class="org.springframework.web.servlet.view.InternalResourceView">
