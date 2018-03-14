@@ -35,6 +35,8 @@ public class MemberService {
 		}
 		return false;
 	}
+	
+	
 
 	public static final int IMAGE_FILENAME_LENGTH = 20;
 
