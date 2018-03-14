@@ -97,7 +97,7 @@ public class ResetPasswordController {
 			// 如果errorMsgMap不是空的，表示有錯誤，交棒給resetPassword
 			return new ModelAndView("resetPassword");
 		}
-		
+	
 	}
 
 }
