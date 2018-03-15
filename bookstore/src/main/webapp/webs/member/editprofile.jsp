@@ -75,7 +75,7 @@
 			<!-- /.col-lg-9 頁面主內容-->
 			<div class="col-lg-9">
 				<Form action="<c:url value='editprofile.controller' />"
-					method="post" id="EditForm">
+					method="post" id="EditForm" enctype="multipart/form-data">
 					<h2>修改個人資料</h2>
 					<div class="form-horizontal rm-form form-profile">
 						<div class="form-group">
@@ -84,13 +84,13 @@
 								<c:if test="${!empty LoginOK}">
 									<img height='256' width='256' id="memberImage"
 										src="${pageContext.request.contextPath}/getImage?id=${LoginOK.memId}&type=MEMBER">
-									<input type="file" name="inputimg_name"
+									<input type="file" name="ImgFile"
 										class="form-control-file" id="memberImageFile">
 								</c:if>
 								<c:if test="${empty LoginOK}">
 								<img height='256' width='256' id="memberImage"
 										src="${pageContext.request.contextPath}/images/default-member-image.png">
-									<input type="file" name="inputimg_name"
+									<input type="file" name="ImgFile"
 										class="form-control-file" id="memberImageFile">
 								</c:if>
 							</div>
@@ -322,26 +322,8 @@
 		            $("#changeEmailSubmit").attr("disabled", true);
 		            //show loading image
 		            $("#loadingImg").show();
-		
 		        });
-		    });
-		$(document).ready(function () {
-			        $("#changePasswordSubmit").click(function(){
-			        	$.post("changepassword.controller", $("#changePasswordForm").serialize(),function(result){
-			        		console.log(result.errorPassword2Match);
-			        		console.log(result..errorPasswordMatch);
-			        	},"json");
-// 			        	$("#changePasswordSubmit").attr("disabled", true);
-// 			        	$("#loadingImg").show();
-// 						$.getJSON('changepassword.controller',function(jsonString){
-// 						console.log("jsonString");})
-			        }) 
-		            //disable the submit button
-		            //show loading image
-
-			});
-	
-		
+		    });		
 	</script>
 </body>
 </html>

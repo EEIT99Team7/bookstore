@@ -75,8 +75,9 @@ public class MemberDaoJdbc {
 		memberBean.setEmail(newEmail);
 	}
 	
-	public void updateMemberDataText(MemberBean newBean) {
+	public void updateMemberData(MemberBean newBean) {
 		MemberBean oldBean = this.selectBymemberID(newBean.getMemId());
+		oldBean.setMemberImage(newBean.getMemberImage());
 		oldBean.setAddr(newBean.getAddr());
 		oldBean.setPhone(newBean.getPhone());   
 		oldBean.setSex(newBean.getSex());
