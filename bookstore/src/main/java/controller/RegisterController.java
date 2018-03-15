@@ -52,7 +52,8 @@ public class RegisterController extends HttpServlet {
 		long sizeInBytes = 0;
 		InputStream is = null;
 		Collection<Part> parts = request.getParts(); // 取出HTTP multipart request內所有的parts
-
+		Blob blob = null;
+		
 		// 由parts != null來判斷此上傳資料是否為HTTP multipart request
 		if (parts != null) { // 如果這是一個上傳資料的表單
 			for (Part p : parts) {
@@ -134,22 +135,11 @@ public class RegisterController extends HttpServlet {
 				// password = GlobalService.getMD5Endocing(GlobalService.encryptString(password));
 				// Timestamp ts = new java.sql.Timestamp(System.currentTimeMillis());
 				
-				Blob blob = null;
+				
 				if(sizeInBytes != 0 && is != null ) {
 					 blob = SystemUtils.fileToBlob(is, sizeInBytes);
 					System.out.println("do filetoblob");
-				}else {
-//					String filepath = getServletContext().getRealPath("/images/default-member-image.png");
-//					
-//					System.out.println(filepath);
-					
-//					if(filepath.exists()) {
-//						System.out.println("有預設圖片");
-//					}else {
-//						System.out.println("找不到預設圖片");
-//					}
-				}
-				
+				}				
 
 				MemberBean memberBean = new MemberBean(null, userName, email, password, null, null, null, null,
 						"member", blob, fileName, 0.0, false, null, nickName, null);
