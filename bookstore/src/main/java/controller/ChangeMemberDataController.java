@@ -57,11 +57,8 @@ public class ChangeMemberDataController {
 			try {
 				fileName = ImgFile.getOriginalFilename();
 				fileName = MemberService.adjustFileName(fileName, MemberService.IMAGE_FILENAME_LENGTH);
-				
 				size = ImgFile.getSize();
 				is =  ImgFile.getInputStream();
-				System.out.println(fileName);
-				System.out.println(size);
 			}catch(Exception e){};
 		}
 		
@@ -72,16 +69,7 @@ public class ChangeMemberDataController {
 		String sex = formData.get("sex");
 		String birthDate = formData.get("birthDate");
 		String description = formData.get("description");
-		
-		System.out.println(addr);
-		System.out.println(phone);
-		System.out.println(nickName);
-		System.out.println(sex);
-		System.out.println(birthDate);
-		System.out.println(description);
-		
-	
-	
+
 		// 寫入更新資料
 		if(size != 0 && is != null ) {
 			 blob = SystemUtils.fileToBlob(is, size);
@@ -120,7 +108,6 @@ public class ChangeMemberDataController {
 	
 		session.setAttribute("LoginOK",newBean);
 		memberDao.updateMemberData(newBean);
-		
 
 		return new ModelAndView("editProfile");
 
