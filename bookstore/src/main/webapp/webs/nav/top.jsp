@@ -34,7 +34,7 @@
           <img height='40px' width='40px' src='${pageContext.request.contextPath}/getImage?id=${LoginOK.memId}&type=MEMBER'>&nbsp;${LoginOK.userName}
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="#">會員專區</a>
+          <a class="dropdown-item" href="${pageContext.request.contextPath}/webs/member/editprofile.jsp">會員中心</a>
           <a class="dropdown-item" href="#">Another action</a>
           <div class="dropdown-divider"></div>
           <a class="dropdown-item" href="${pageContext.request.contextPath}/webs/logout.jsp">登出</a>

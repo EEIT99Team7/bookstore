@@ -29,13 +29,18 @@ public class MemberBean {
 	private Blob memberImage;
 	private String fileName;
 	private Double unpaid_amount;
-
+	private Boolean resetState;
+	private String resetId;
+	private String nickName;
+	private String description;
+	
 	public MemberBean() {
 		super();
-	};
+	}
 
 	public MemberBean(Integer memId, String userName, String email, String pw, String addr, String phone, String sex,
-			Date birthDate, String userType, Blob memberImage, String fileName, Double unpaid_amount) {
+			Date birthDate, String userType, Blob memberImage, String fileName, Double unpaid_amount,
+			Boolean resetState, String resetId, String nickName, String description) {
 		super();
 		this.memId = memId;
 		this.userName = userName;
@@ -49,8 +54,23 @@ public class MemberBean {
 		this.memberImage = memberImage;
 		this.fileName = fileName;
 		this.unpaid_amount = unpaid_amount;
+		this.resetState = resetState;
+		this.resetId = resetId;
+		this.nickName = nickName;
+		this.description = description;
 	}
 
+
+	@Override
+	public String toString() {
+		return "MemberBean [memId=" + memId + ", userName=" + userName + ", email=" + email + ", pw=" + pw + ", addr="
+				+ addr + ", phone=" + phone + ", sex=" + sex + ", birthDate=" + birthDate + ", userType=" + userType
+				+ ", memberImage=" + memberImage + ", fileName=" + fileName + ", unpaid_amount=" + unpaid_amount
+				+ ", resetState=" + resetState + ", resetId=" + resetId + ", nickName=" + nickName + ", description="
+				+ description + "]";
+	}
+
+	
 	public Integer getMemId() {
 		return memId;
 	}
@@ -147,11 +167,39 @@ public class MemberBean {
 		this.unpaid_amount = unpaid_amount;
 	}
 
-	@Override
-	public String toString() {
-		return "MemberBean [memId=" + memId + ", userName=" + userName + ", email=" + email + ", pw=" + pw + ", addr="
-				+ addr + ", phone=" + phone + ", sex=" + sex + ", birthDate=" + birthDate + ", userType=" + userType
-				+ ", memberImage=" + memberImage + ", fileName=" + fileName + ", unpaid_amount=" + unpaid_amount + "]";
+	public Boolean getResetState() {
+		return resetState;
 	}
+
+	public void setResetState(Boolean resetState) {
+		this.resetState = resetState;
+	}
+
+	public String getResetId() {
+		return resetId;
+	}
+
+	public void setResetId(String resetId) {
+		this.resetId = resetId;
+	}
+
+	public String getNickName() {
+		return nickName;
+	}
+
+
+	public void setNickName(String nickName) {
+		this.nickName = nickName;
+	}
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	};
+
+	
 
 }

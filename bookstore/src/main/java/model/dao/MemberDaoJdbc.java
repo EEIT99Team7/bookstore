@@ -28,19 +28,27 @@ public class MemberDaoJdbc {
 		return bean;
 	};
 	
-
+	@Transactional(readOnly = true)
 	public MemberBean selectBymemberEmail(String email) {
 		String sql = "FROM MemberBean WHERE email = '"+ email + "'";
 		MemberBean bean = this.getSession().createQuery(sql, MemberBean.class).uniqueResult();
 		return bean;
 	};
-
-	public MemberBean selectByUserName(String UserName) {
-		String sql = "FROM MemberBean WHERE UserName = '"+ UserName + "'";
+	@Transactional(readOnly = true)
+	public MemberBean selectByUserName(String userName) {
+		String sql = "FROM MemberBean WHERE userName = '"+ userName + "'";
 		MemberBean bean = this.getSession().createQuery(sql, MemberBean.class).uniqueResult();
 		return bean;
 	};
 	
+	@Transactional(readOnly = true)
+	public MemberBean selectByResetId(String resetId) {
+		String sql = "FROM MemberBean WHERE resetId = '"+ resetId + "'";
+		MemberBean bean = this.getSession().createQuery(sql, MemberBean.class).uniqueResult();
+		return bean;
+	};
+	
+	@Transactional(readOnly = true)
 	public List<MemberBean> selectAll() {
 		List<MemberBean> list = new ArrayList<MemberBean>();
 		Session session = this.getSession();
@@ -50,5 +58,33 @@ public class MemberDaoJdbc {
 
 	};
 	
+	public void updateRestStatus(String email, Boolean resetState, String resetId) {
+		MemberBean memberBean = this.selectBymemberEmail(email);
+		memberBean.setResetId(resetId);
+		memberBean.setResetState(resetState);
+	}
+	
+	public void updatePassword(String userName, String newPassword) {
+		MemberBean memberBean = this.selectByUserName(userName);
+		memberBean.setPw(newPassword);
+		
+	}
+	
+	public void updateEmail(String oldEmail, String newEmail) {
+		MemberBean memberBean = this.selectBymemberEmail(oldEmail);
+		memberBean.setEmail(newEmail);
+	}
+	
+	public void updateMemberData(MemberBean newBean) {
+		MemberBean oldBean = this.selectBymemberID(newBean.getMemId());
+		oldBean.setMemberImage(newBean.getMemberImage());
+		oldBean.setAddr(newBean.getAddr());
+		oldBean.setPhone(newBean.getPhone());   
+		oldBean.setSex(newBean.getSex());
+		oldBean.setBirthDate(newBean.getBirthDate());
+		oldBean.setNickName(newBean.getNickName());
+		oldBean.setDescription(newBean.getDescription());		
+				
+	}
 	
 }

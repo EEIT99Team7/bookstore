@@ -47,11 +47,13 @@ public class RegisterController extends HttpServlet {
 		String password = "";
 		String password2 = "";
 		String email = "";
+		String nickName = "";
 		String fileName = "";
 		long sizeInBytes = 0;
 		InputStream is = null;
 		Collection<Part> parts = request.getParts(); // 取出HTTP multipart request內所有的parts
-
+		Blob blob = null;
+		
 		// 由parts != null來判斷此上傳資料是否為HTTP multipart request
 		if (parts != null) { // 如果這是一個上傳資料的表單
 			for (Part p : parts) {
@@ -68,6 +70,8 @@ public class RegisterController extends HttpServlet {
 						password2 = value;
 					} else if (fldName.equalsIgnoreCase("email")) {
 						email = value;
+					}else if (fldName.equalsIgnoreCase("nickName")) {
+						nickName = value;
 					}
 				} else {
 					fileName = MemberService.getFileName(p); // 此為圖片檔的檔名
@@ -100,7 +104,9 @@ public class RegisterController extends HttpServlet {
 			if (email == null || email.trim().length() == 0) {
 				errorMsg.put("errorEmail", "電子郵件欄必須輸入");
 			}
-
+			if (nickName == null || nickName.trim().length() == 0) {
+				errorMsg.put("errorNickName", "暱稱欄必須輸入");
+			}
 		} else {
 			errorMsg.put("errTitle", "此表單不是上傳檔案的表單");
 		}
@@ -126,19 +132,17 @@ public class RegisterController extends HttpServlet {
 			if (rs.userNameExists(userName)) {
 				errorMsg.put("errorIDDup", "此帳號已存在，請換新代號");
 			} else {
-				// password =
-				// GlobalService.getMD5Endocing(GlobalService.encryptString(password));
+				// password = GlobalService.getMD5Endocing(GlobalService.encryptString(password));
 				// Timestamp ts = new java.sql.Timestamp(System.currentTimeMillis());
 				
-				Blob blob = null;
+				
 				if(sizeInBytes != 0 && is != null ) {
 					 blob = SystemUtils.fileToBlob(is, sizeInBytes);
 					System.out.println("do filetoblob");
-				}
-				
+				}				
 
 				MemberBean memberBean = new MemberBean(null, userName, email, password, null, null, null, null,
-						"member", blob, fileName, 0.0);
+						"member", blob, fileName, 0.0, false, null, nickName, null);
 
 				int n = rs.addMember(memberBean);
 				if (n == 1) {

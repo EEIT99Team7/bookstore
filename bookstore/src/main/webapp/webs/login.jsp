@@ -20,6 +20,10 @@
 	<link  href="${pageContext.request.contextPath}/css/ellipsis.css" rel="stylesheet">
 <!-- 顯示邊界 調整DIV用 -->
  <style>
+ #legend{
+	margin: 1rem auto 1rem;
+	text-align:center;
+}
         fieldset {
         	max-width:500px;
             border: 3px solid gray;
@@ -48,12 +52,7 @@
         }
     </style>
     
- <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            document.getElementById("name").addEventListener("blur", checkName);
-            document.getElementById("pwd").addEventListener("blur", checkpwd);
-        });
-    </script>
+
 </head>
 <body>
 	
@@ -63,7 +62,7 @@
 	<div class="container">
 		<div id='content'>
 			<Form action="<c:url value='login.controller' />" method="post"	name="loginForm">
-				<legend align="center" >會員登入</legend>
+				<h4 id="legend">會員登入</h4>
 				<fieldset>
 				 
 				 <div class="block">

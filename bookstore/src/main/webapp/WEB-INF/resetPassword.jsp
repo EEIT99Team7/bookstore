@@ -5,12 +5,12 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
 <meta name="description" content="">
 <meta name="author" content="">
-<title>忘記密碼</title>
+<title>重設密碼</title>
 <!-- Bootstrap core CSS -->
 <link
 	href="${pageContext.request.contextPath}/vendor/bootstrap/css/bootstrap.min.css"
@@ -52,33 +52,33 @@ fieldset {
 	max-width: 450px;
 	text-align: center;
 }
-#loadingImg {
-	display:none;
-}
 </style>
-
 </head>
 <body>
 	<!-- 引用共同導覽列 -->
 	<jsp:include page="/webs/nav/top.jsp" />
-	<span id ="">${msgOK.QueryOK}</span>
+	<span id ="">${msgOK.ResetOK}</span>
 	<div class="container">
 		<div id='content'>
-			<Form action="<c:url value='forgot.controller' />" method="post"
-				name="forgotForm" onsubmit="load()">
-				<h4 id="legend">忘記密碼</h4>
+			<Form action="<c:url value='/resetpassword' />" method="post"
+				name="ResetForm" >
+				<h4 id="legend">重設密碼</h4>
 				<fieldset>
-
 					<div class="block">
-						<label for="name">電子信箱：</label><input type="text" name="email"
-							autofocus placeholder="請輸入email" /><span class="warning"
-							id="nValidate">${ErrorMsgKey.EmailEmptyError}${ErrorMsgKey.EmailNotFoundError}</span><br />
+						<label for="newPassword">新密碼：</label>
+						<input type="password" name="newPassword" autofocus placeholder="請輸入新密碼" />
+						<span class="warning">${ErrorMsgKey.errorPasswordEmpty} </span><br />
 					</div>
-					</hr>
+					<div class="block">
+						<label for="pwdcomfirm">確認新密碼：</label>
+						<input type="password" name="pwdcomfirm" autofocus placeholder="請再次輸入密碼" />
+						<span class="warning">${ErrorMsgKey.errorPassword2Empty}</span><br />
+					</div>
+
 					<div class="sub">
-						<input type="submit" class="btn btn-success" value="查詢" id="submitquery" />
-						<img height='32px' width='32px' src="${pageContext.request.contextPath}/images/loading.gif" id="loadingImg">
+						<input type="submit" class="btn btn-success" value="送出" />
 					</div>
+
 				</fieldset>
 				<legend align="center"></legend>
 			</Form>
@@ -92,12 +92,6 @@ fieldset {
 		src="${pageContext.request.contextPath}/vendor/jquery/jquery.min.js"></script>
 	<script
 		src="${pageContext.request.contextPath}/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-	<script>
-	var loadingImg = document.getElementById("loadingImg")
-	function load(){
-		this.submitquery.disabled=true
-		loadingImg.style.display="inline";
-	}
-	</script>
+
 </body>
 </html>

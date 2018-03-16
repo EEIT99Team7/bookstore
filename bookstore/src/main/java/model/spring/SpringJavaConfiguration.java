@@ -47,8 +47,16 @@ public class SpringJavaConfiguration {
 
 	@Bean
 	public HibernateTransactionManager transactionManager() {
-		
 		return new HibernateTransactionManager(sessionFactory());
+	}
+
+	//Spring檔案上傳元件
+	@Bean
+	public CommonsMultipartResolver multipartResolver() {
+		CommonsMultipartResolver resolver = new CommonsMultipartResolver();
+		resolver.setDefaultEncoding("utf-8");
+		resolver.setMaxUploadSize(1024*1024*500);
+		return resolver;
 	}
 
 }
