@@ -140,8 +140,8 @@ public class RegisterController extends HttpServlet {
 					System.out.println("do filetoblob");
 				}				
 
-				MemberBean memberBean = new MemberBean(null, userName, email, password, null, null, null, null,
-						"member", blob, fileName, 0.0, false, null, nickName, null);
+				MemberBean memberBean = new MemberBean(null, userName,nickName, email, password, null, null, null, null,
+						"member", blob, fileName, 0.0, false, null,  null);
 
 				int n = rs.addMember(memberBean);
 				if (n == 1) {
