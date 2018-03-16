@@ -1,6 +1,7 @@
 package model;
 
-import java.sql.Blob;
+import java.io.*;
+import java.sql.*;
 import java.util.Date;
 
 import javax.persistence.*;
@@ -28,7 +29,7 @@ public class MemberBean implements Serializable {
 	private Boolean resetState;
 	private String resetId;
 	private String description;
-	
+
 	public MemberBean() {
 		super();
 	}
@@ -55,85 +56,61 @@ public class MemberBean implements Serializable {
 		this.description = description;
 	}
 
-
-	@Override
-	public String toString() {
-		return "MemberBean [memId=" + memId + ", userName=" + userName + ", email=" + email + ", pw=" + pw + ", addr="
-				+ addr + ", phone=" + phone + ", sex=" + sex + ", birthDate=" + birthDate + ", userType=" + userType
-				+ ", memberImage=" + memberImage + ", fileName=" + fileName + ", unpaid_amount=" + unpaid_amount
-				+ ", resetState=" + resetState + ", resetId=" + resetId + ", nickName=" + nickName + ", description="
-				+ description + "]";
-	}
-
-	
 	public Integer getMemId() {
 		return memId;
 	}
-
 	public void setMemId(Integer memId) {
 		this.memId = memId;
 	}
+	
 
 	public String getUserName() {
 		return userName;
 	}
-
 	public void setUserName(String userName) {
 		this.userName = userName;
 	}
-
 	public String getEmail() {
 		return email;
 	}
-
 	public void setEmail(String email) {
 		this.email = email;
 	}
-
+	
 	public String getPw() {
 		return pw;
 	}
-
 	public void setPw(String pw) {
 		this.pw = pw;
 	}
-
+	
 	public String getAddr() {
 		return addr;
 	}
-
 	public void setAddr(String addr) {
 		this.addr = addr;
 	}
-
 	public String getPhone() {
 		return phone;
 	}
-
 	public void setPhone(String phone) {
 		this.phone = phone;
 	}
-
 	public String getSex() {
 		return sex;
 	}
-
 	public void setSex(String sex) {
 		this.sex = sex;
 	}
-
 	public java.util.Date getBirthDate() {
 		return birthDate;
 	}
-
 	public void setBirthDate(java.util.Date birthDate) {
 		this.birthDate = birthDate;
 	}
-
 	public String getUserType() {
 		return userType;
 	}
-
 	public void setUserType(String userType) {
 		this.userType = userType;
 	}
@@ -141,25 +118,26 @@ public class MemberBean implements Serializable {
 	public Blob getMemberImage() {
 		return memberImage;
 	}
-
 	public void setMemberImage(Blob memberImage) {
 		this.memberImage = memberImage;
 	}
-
 	public String getFileName() {
 		return fileName;
 	}
-
 	public void setFileName(String fileName) {
 		this.fileName = fileName;
 	}
-
 	public Double getUnpaid_amount() {
 		return unpaid_amount;
 	}
-
 	public void setUnpaid_amount(Double unpaid_amount) {
 		this.unpaid_amount = unpaid_amount;
+	}
+	public String getNickName() {
+		return nickName;
+	}
+	public void setNickName(String nickname) {
+		this.nickName = nickname;
 	}
 
 	public Boolean getResetState() {
@@ -178,23 +156,13 @@ public class MemberBean implements Serializable {
 		this.resetId = resetId;
 	}
 
-	public String getNickName() {
-		return nickName;
-	}
-
-
-	public void setNickName(String nickName) {
-		this.nickName = nickName;
-	}
-
 	public String getDescription() {
 		return description;
 	}
 
+
 	public void setDescription(String description) {
 		this.description = description;
-	};
-
-	
-
+	}
+		
 }
