@@ -15,7 +15,30 @@
 	</properties>
 
 	<dependencies>
-		<!-- Spring -->
+
+
+		<dependency>
+			<groupId>log4j</groupId>
+			<artifactId>log4j</artifactId>
+			<version>1.2.17</version>
+		</dependency>
+
+
+		<!-- https://mvnrepository.com/artifact/org.slf4j/slf4j-api -->
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-api</artifactId>
+			<version>1.7.25</version>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/com.microsoft.sqlserver/mssql-jdbc -->
+		<dependency>
+			<groupId>com.microsoft.sqlserver</groupId>
+			<artifactId>mssql-jdbc</artifactId>
+			<version>6.3.6.jre8-preview</version>
+			<scope>test</scope>
+		</dependency>
+
 
 		<dependency>
 			<groupId>org.springframework</groupId>
@@ -36,6 +59,18 @@
 		</dependency>
 
 		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-web</artifactId>
+			<version>5.0.3.RELEASE</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-context</artifactId>
+			<version>5.0.3.RELEASE</version>
+		</dependency>
+
+		<dependency>
 			<groupId>org.aspectj</groupId>
 			<artifactId>aspectjweaver</artifactId>
 			<version>1.8.13</version>
@@ -46,6 +81,7 @@
 			<artifactId>aopalliance</artifactId>
 			<version>1.0</version>
 		</dependency>
+
 
 		<dependency>
 			<groupId>org.hibernate</groupId>
@@ -58,6 +94,8 @@
 			<artifactId>jstl</artifactId>
 			<version>1.2</version>
 		</dependency>
+
+
 
 		<dependency>
 			<groupId>com.google.oauth-client</groupId>
@@ -78,6 +116,7 @@
 		</dependency>
 
 		<!-- JAVA Mail -->
+		
 		<dependency>
 			<groupId>com.sun.mail</groupId>
 			<artifactId>javax.mail</artifactId>
@@ -98,7 +137,6 @@
 			<version>2.4</version>
 		</dependency>
 
-
 		<!-- JSP 2.3.1 API -->
 		<dependency>
 			<groupId>javax.servlet.jsp</groupId>
@@ -114,7 +152,6 @@
 			<version>3.1.0</version>
 			<scope>provided</scope>
 		</dependency>
-
 	</dependencies>
 	<build>
 		<finalName>${project.artifactId}-${project.version}</finalName>
