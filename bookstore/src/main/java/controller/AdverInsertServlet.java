@@ -26,11 +26,11 @@ import model.ProductBean;
 import model.dao.AdverDaoJdbc;
 import model.dao.ProductDaoJdbc;
 
-//此為廣告上傳修改servlet
-@WebServlet("/AdverUpdate.do")
+//此為廣告新增servlet
+@WebServlet("/AdverInsert.do")
 @MultipartConfig(location = "", fileSizeThreshold = 1024 * 1024, maxFileSize = 1024 * 1024 * 500, maxRequestSize = 1024
 		* 1024 * 500 * 5)
-public class AdverUpdateServlet extends HttpServlet {
+public class AdverInsertServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private AdverDaoJdbc adj;
 
@@ -51,7 +51,7 @@ public class AdverUpdateServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		HttpSession session = request.getSession();
-		System.out.println("adupdate Test");
+		System.out.println("adinsert Test");
 		// if (!session.isNew()) {
 		// adverBean = (AdverBean) session.getAttribute("bean");
 		// } else {
@@ -143,8 +143,8 @@ public class AdverUpdateServlet extends HttpServlet {
 				blob = SystemUtils.fileToBlob(is, sizeInBytes);
 			}
 
-			AdverBean newBean = new AdverBean(adverId, imgFilename, blob, status);
-			adj.updateAdver(newBean, sizeInBytes);
+			AdverBean newBean = new AdverBean(null, imgFilename, blob, status);
+			adj.insertAdv(newBean);
 			successMsgs.put("success", "資料修改成功");
 
 			Collection<AdverBean> coll = adj.getAdvertisementsAll();
