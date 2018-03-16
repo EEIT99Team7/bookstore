@@ -94,11 +94,19 @@ public class DisplayMaintainProductsServlet extends HttpServlet {
 			} catch (Exception e) {
 				throw new ServletException(e);
 			}
-		}else if("ADVER".equalsIgnoreCase(type)) {
+		} else if ("ADVER".equalsIgnoreCase(type)) {
 			Collection<AdverBean> coll = adverDaoJdbc.getAdvertisementsAll();
 			request.setAttribute("AdverBeans", coll);
 			RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/maintainAdver.jsp");
 			rd.forward(request, response);
+		} else {
+			// 預設顯示頁面
+			Collection<ProductBean> coll = productDaoJdbc.selectAll();
+
+			request.setAttribute("ProductBeans", coll);
+			RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/maintainProducts.jsp");
+			rd.forward(request, response);
+
 		}
 	}
 }

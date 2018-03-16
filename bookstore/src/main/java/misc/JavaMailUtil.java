@@ -166,9 +166,9 @@ public class JavaMailUtil {
 		MimeBodyPart bodyPart0 = new MimeBodyPart();
 		int idx1 = tokenCount(text, "<");
 		int idx2 = tokenCount(text, ">");
-		System.out.println(text);
-		System.out.println(idx1);
-		System.out.println(idx2);
+//		System.out.println(text);
+//		System.out.println(idx1);
+//		System.out.println(idx2);
 		if (idx1 == idx2 && idx1 != -1) {
 			bodyPart0.setText(text, "UTF-8", "html");
 		} else {

@@ -41,10 +41,10 @@ public class AdverDaoJdbc implements Serializable {
 		return count;
 	}
 
-	public AdverBean queryAdById(Integer Id) throws SQLException {
+	public AdverBean queryAdById(Integer Id) {
 		
 		AdverBean bean = null;
-		String sql = "SELECT id,imgName,adverImage FROM ADVERTISEMENT WHERE Id=? ";
+		String sql = "SELECT id,imgName,adverImage,status FROM ADVERTISEMENT WHERE Id=? ";
 		try (Connection connection = dataSource.getConnection(); 
 			PreparedStatement ps = connection.prepareStatement(sql);) 
 		{
@@ -55,6 +55,7 @@ public class AdverDaoJdbc implements Serializable {
 					bean.setId(rs.getInt(1));
 					bean.setImgName(rs.getString(2));
 					bean.setAdverImage(rs.getBlob(3));					
+					bean.setStatus(rs.getBoolean(4));
 				}
 			}
 		} catch (SQLException e) {
@@ -154,48 +155,39 @@ public class AdverDaoJdbc implements Serializable {
 		return n;
 	}
 	
-//	// 依bookID來刪除單筆記錄
-//	public int deleteBook(int no) {
-//		int n = 0;
-//		String sql = "DELETE FROM PRODUCT WHERE bookId = ?";
-//		try (
-//			Connection connection = dataSource.getConnection(); 
-//			PreparedStatement pStmt = connection.prepareStatement(sql);
-//		) {
-//			pStmt.setInt(1, no);
-//			n = pStmt.executeUpdate();
-//		} catch (SQLException e) {
-//			throw new RuntimeException(e);
-//		}
-//		return n;
-//	}
-//	
-//	public int saveBook(ProductBean bean) {
-//		int n = 0;
-//		
-//		String sql = "INSERT INTO Product " 
-//				+ " (title,  author,  price, press, "
-//				+ " stock, sells, bookNo, content, coverImage) " 
-//				+ " VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
-//
-//		try (
-//			Connection connection = dataSource.getConnection();
-//			PreparedStatement pStmt = connection.prepareStatement(sql);
-//		) {
-//			pStmt.setString(1, bean.getTitle());
-//			pStmt.setString(2, bean.getAuthor());
-//			pStmt.setDouble(3, bean.getPrice());
-//			pStmt.setString(4, bean.getPress());
-//			pStmt.setInt(5, bean.getStock());
-//			pStmt.setInt(6, bean.getSells());
-//			pStmt.setInt(7, bean.getBookNo());
-//			pStmt.setString(8, bean.getContent());
-//			pStmt.setBlob(9, bean.getCoverImage());
-//			n = pStmt.executeUpdate();
-//		} catch (SQLException e) {
-//			throw new RuntimeException(e);
-//		}
-//		return n;
-//	}
+	public int insertAdv(AdverBean bean) {
+		int n = 0;		
+		String sql = "INSERT INTO ADVERTISEMENT (imgName, adverImage, status) VALUES (?, ?, ?)";
+		try (
+			Connection connection = dataSource.getConnection();
+			PreparedStatement pStmt = connection.prepareStatement(sql);
+		) {
+			pStmt.setString(1, bean.getImgName());
+			pStmt.setBlob(2, bean.getAdverImage());
+			pStmt.setBoolean(3, bean.getStatus());
+			n = pStmt.executeUpdate();
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
+		}
+		return n;
+	}
+	
+	
+	// 依AdverID來刪除單筆記錄
+	public int deleteAdver(int no) {
+		int n = 0;
+		String sql = "DELETE FROM ADVERTISEMENT WHERE Id = ?";
+		try (
+			Connection connection = dataSource.getConnection(); 
+			PreparedStatement pStmt = connection.prepareStatement(sql);
+		) {
+			pStmt.setInt(1, no);
+			n = pStmt.executeUpdate();
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
+		}
+		return n;
+	}
+
 	
 }

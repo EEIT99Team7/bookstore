@@ -2,19 +2,20 @@ package model.dao;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import model.AdverBean;
 import model.MemberBean;
 import model.ProductBean;
 @Repository
+@Transactional
 public class GetImageImpl {
 	@Autowired
 	AdverDaoJdbc adao;
 	@Autowired
-	ProductDaoJdbc pdao;
+	ProductDaoJdbc pdao;	
 	@Autowired
 	MemberDaoJdbc mdao;
-	
 	public GetImageImpl() {
 	}
 	//取得廣告圖片

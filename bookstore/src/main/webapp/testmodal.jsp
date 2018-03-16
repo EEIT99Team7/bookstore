@@ -1,58 +1,51 @@
-
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+	
+	<link rel="stylesheet" href="${pageContext.request.contextPath}/css/bootstrap.min.css" >
+	<script src="${pageContext.request.contextPath}/js/jquery-3.2.1.min.js" ></script>
 
-  <link rel="stylesheet" href="${pageContext.request.contextPath}/css/bootstrap3.3.7.min.css">
-  <script src="${pageContext.request.contextPath}/js/jquery-3.3.1.min.js"></script>
-  <script src="${pageContext.request.contextPath}/js/bootstrap3.3.7.min.js"></script>
+	<script src="${pageContext.request.contextPath}/bootstrap4/js/bootstrap.min.js"></script>
+
 </head>
 <body>
+	<!-- 引用上方共同導覽列 -->
+	<jsp:include page="/webs/nav/top.jsp" />
+
+
 <!-- Button trigger modal -->
+<br><br><br>
+<!-- fdsfdsa -->
+<br>
+<br>
+<br>
 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
   Launch demo modal
 </button>
 
-<!-- Modal -->
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">Open modal for @mdo</button>
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@fat">Open modal for @fat</button>
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@getbootstrap">Open modal for @getbootstrap</button>
+<!-- 使用非按鈕的方式呼叫modal -->
+<!-- data-target對應要呼叫的modal的id屬性 -->
+<div data-toggle="modal" data-target="#exampleModal">test</div>
 
+<!-- Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">修改密碼</h5>
+        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">
-        <form>
-          <div class="form-group">
-            <label for="recipient-name" class="col-form-label">Recipient:</label>
-            <input type="text" class="form-control" id="recipient-name">
-          </div>
-           <div class="form-group">
-            <label for="recipient-name" class="col-form-label">Recipient:</label>
-            <input type="text" class="form-control" id="recipient-name">
-          </div>
-           <div class="form-group">
-            <label for="recipient-name" class="col-form-label">Recipient:</label>
-            <input type="text" class="form-control" id="recipient-name">
-          </div>
-        </form>
+		<!--modal內容 -->
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Send message</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
       </div>
     </div>
   </div>
 </div>
+
+
 </body>
-</html>

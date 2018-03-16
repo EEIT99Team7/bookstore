@@ -13,9 +13,8 @@ public class AdverBean {
 	@Id
 	private Integer id;
 	private String imgName;
-	private Blob adverImage;
 	private Boolean status;
-	
+	private Blob adverImage;
 	
 	public AdverBean() {
 	

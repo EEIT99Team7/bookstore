@@ -18,5 +18,7 @@
 		
 
 		<mapping class="model.MemberBean" />
+		<mapping class="model.ProductBean" />
+		<mapping class="_04_ShoppingCart.model.OrderBean" />
 	</session-factory>
 </hibernate-configuration>

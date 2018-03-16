@@ -13,25 +13,16 @@
 <meta name="google-signin-client_id"
 	content="30136455505-9rt5nfgsvktopts10pc3eqff7ui86jq6.apps.googleusercontent.com">
 <title>註冊成功</title>
-<!-- Bootstrap core CSS -->
-<link
-	href="${pageContext.request.contextPath}/vendor/bootstrap/css/bootstrap.min.css"
-	rel="stylesheet">
 
+<!-- Bootstrap core CSS -->
+<link href="${pageContext.request.contextPath}/bootstrap4/css/bootstrap.min.css" rel="stylesheet">
 <!-- Custom styles for this template -->
-<link href="${pageContext.request.contextPath}/css/bootstrap3.3.7.min.css"
-	rel="stylesheet">
+<link href="${pageContext.request.contextPath}/css/shop-homepage.css" rel="stylesheet">
+
 <style>
 #legend {
 	margin: 1rem auto 1rem;
 	text-align: center;
-}
-
-fieldset {
-	max-width: 500px;
-	border: 3px solid gray;
-	margin: auto;
-	border-radius: 20px;
 }
 
 .block {
@@ -63,7 +54,7 @@ fieldset {
 	<div class="container">
 
 		<div class="row text-center">
-			<div class="col-sm-6 col-sm-offset-3">
+			<div class="col-sm-6 offset-sm-3">
 				<br> <br>
 				<h2 style="color: #0fad00">歡迎您的加入</h2>
 				<img height='80px' width='80px'
@@ -86,7 +77,8 @@ fieldset {
 		src="${pageContext.request.contextPath}/vendor/jquery/jquery.min.js"></script>
 	<script
 		src="${pageContext.request.contextPath}/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-
+	<!-- Google Login -->
+	<script src="https://apis.google.com/js/platform.js" async defer></script>
 
 </body>
 </html>

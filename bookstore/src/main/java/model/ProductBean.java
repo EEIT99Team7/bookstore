@@ -1,15 +1,21 @@
 package model;
 
 import java.sql.Blob;
+import java.util.Set;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 @Entity
 @Table(name="PRODUCT")
 public class ProductBean {
 	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer	bookId;
 	private String 	title;
 	private String 	author;
@@ -20,8 +26,10 @@ public class ProductBean {
 	private Integer	bookNo;//REFERENCES Category(bookNo),   --類型
 	private Blob 	coverImage;
 	private String 	content;
+		
 	
 	//categoryBean，作為外鍵類別名稱的儲存欄位
+	@Transient
 	private String categoryName;
 	
 	public ProductBean(Integer bookID, String title, String author, 
