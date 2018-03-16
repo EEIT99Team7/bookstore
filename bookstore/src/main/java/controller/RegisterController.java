@@ -35,13 +35,12 @@ public class RegisterController extends HttpServlet {
 
 		// 準備存放錯誤訊息的Map物件
 		Map<String, String> errorMsg = new HashMap<String, String>();
-		// 準備存放註冊成功之訊息的Map物件
-		Map<String, String> msgOK = new HashMap<String, String>();
+	
 		// 註冊成功後將用response.sendRedirect()導向新的畫面，所以需要
 		// session物件來存放共用資料。
 		HttpSession session = request.getSession();
 		request.setAttribute("MsgError", errorMsg); // 顯示錯誤訊息
-		session.setAttribute("MsgOK", msgOK); // 顯示正常訊息
+		
 
 		String userName = "";
 		String password = "";
@@ -146,8 +145,7 @@ public class RegisterController extends HttpServlet {
 
 				int n = rs.addMember(memberBean);
 				if (n == 1) {
-					msgOK.put("InsertOK", "<Font color='red'>新增成功，請開始使用本系統</Font>");
-					response.sendRedirect("../index.jsp");
+					response.sendRedirect("registerOK.jsp");
 					return;
 				} else {
 					errorMsg.put("errorIDDup", "新增此筆資料有誤(RegisterServlet)");

@@ -98,7 +98,7 @@ public class ChangeMemberDataController {
 			}
 
 		}
-		if (description != null && !description.isEmpty()) {
+		if (description != null) {
 			newBean.setDescription(description);
 		}
 		// 如果 errorMsgMap 不是空的，表示有錯誤
