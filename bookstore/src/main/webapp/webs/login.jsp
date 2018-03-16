@@ -9,6 +9,7 @@
 
     <meta name="description" content="">
     <meta name="author" content="">
+    <meta name="google-signin-client_id" content="30136455505-9rt5nfgsvktopts10pc3eqff7ui86jq6.apps.googleusercontent.com">
 <title>登入</title>
 <!-- Bootstrap core CSS -->
 <!-- Bootstrap core CSS -->
@@ -75,6 +76,7 @@
               
 				    <div class="sub">
                                 <input type="submit" class="btn btn-success btn-block" value="登入" /><br/>
+                                <div class="btn-block g-signin2" data-onsuccess="onSignIn"></div>
                                 <a href="${pageContext.request.contextPath}/webs/forgot.jsp">忘記密碼?</a><span>&nbsp;&nbsp;|&nbsp;&nbsp;</span>
                                 <a href="${pageContext.request.contextPath}/webs/register.jsp">加入會員</a>
                             </div>
@@ -82,6 +84,7 @@
 				  </fieldset>
 <legend align="center" ></legend>
 			</Form>
+			
 		</div>
 	</div>
 	<!-- 引用共同footer -->
@@ -92,6 +95,8 @@
 		src="${pageContext.request.contextPath}/vendor/jquery/jquery.min.js"></script>
 	<script
 		src="${pageContext.request.contextPath}/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+	<!-- Google Login -->
+	<script src="https://apis.google.com/js/platform.js" async defer></script>
 
 </body>
 </html>
