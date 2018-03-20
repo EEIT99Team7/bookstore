@@ -14,10 +14,8 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.web.context.WebApplicationContext;
 
 import model.AdverBean;
-import model.MemberBean;
 import model.ProductBean;
 import model.dao.AdverDaoJdbc;
-import model.dao.MemberDAOHibernate;
 import model.dao.ProductDaoJdbc;
 
 //動態產生的首頁servlet
@@ -27,7 +25,7 @@ public class FrontpageServlet extends HttpServlet {
        
 	private AdverDaoJdbc adverDaoJdbc;
 	private ProductDaoJdbc productDaoJdbc;
-	private MemberDAOHibernate memberDAOHibernate;
+//	private MemberDAOHibernate memberDAOHibernate;
     public FrontpageServlet() {
         super();
         // TODO Auto-generated constructor stub
@@ -40,7 +38,7 @@ public class FrontpageServlet extends HttpServlet {
 					WebApplicationContext.ROOT_WEB_APPLICATION_CONTEXT_ATTRIBUTE);
 			adverDaoJdbc = (AdverDaoJdbc) context.getBean("adverDaoJdbc");
 			productDaoJdbc = (ProductDaoJdbc)context.getBean("productDaoJdbc");
-			memberDAOHibernate = (MemberDAOHibernate)context.getBean("memberDAOHibernate");
+//			memberDAOHibernate = (MemberDAOHibernate)context.getBean("memberDAOHibernate");
 		
 	}
 

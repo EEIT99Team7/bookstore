@@ -70,6 +70,12 @@
 					<a	href="${pageContext.request.contextPath}/webs/member/changepassword.jsp"
 						class="list-group-item">修改密碼</a>
 				</div>
+				<c:if test="${LoginOK.userType =='member'}">
+				<div class="list-group">
+					<a	href="${pageContext.request.contextPath}/webs/member/customerservice.jsp"
+						class="list-group-item">聯絡客服</a>
+				</div>
+				</c:if>
 			</div>
 
 			<!-- /.col-lg-9 頁面主內容-->
@@ -231,40 +237,6 @@
   </div>
 </div>
 
-	<!-- Modal 2 變更密碼-->
-<div class="modal fade" id="changePassword" tabindex="-1" role="dialog" aria-labelledby="changePasswordLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="changePasswordLabel">修改密碼</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <form id="changePasswordForm">
-          <div class="form-group">
-            <label for="oldPassword" class="col-form-label">輸入舊密碼</label><span>${ErrorMsgKey.errorPasswordEmpty}${ErrorMsgKey.PWDNotCorrectError}</span>
-            <input type="text" class="form-control" id="oldPassword" name="oldPassword">
-          </div>
-           <div class="form-group">
-            <label for="newPassword" class="col-form-label">設定新密碼</label><span>${ErrorMsgKey.errorPasswordMatch}${ErrorMsgKey.errorPasswordDuplicate}</span>
-            <input type="text" class="form-control" id="newPassword" name="newPassword">
-          </div>
-           <div class="form-group">
-            <label for="newPassword2" class="col-form-label">再次確認</label><span>${ErrorMsgKey.errorPassword2Match}</span>
-            <input type="text" class="form-control" id="newPassword2" name="newPassword2">
-          </div>
-       </form>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">取消</button>
-        <button type="button" class="btn btn-primary" id="changePasswordSubmit">更改</button>
-      </div>
-    </div>
-  </div>
-</div>
-	
 	
 	<!-- 引用共同footer -->
 	<jsp:include page="/webs/nav/footer.jsp" />
