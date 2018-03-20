@@ -7,5 +7,7 @@
 	<div class="list-group">
 	  <a href="${pageContext.request.contextPath}/MaintainProductServlet?type=BOOK" class="list-group-item">更改書籍資訊</a>
 	  <a href="${pageContext.request.contextPath}/MaintainProductServlet?type=ADVER" class="list-group-item">更改廣告資訊</a>
+	  <a href="${pageContext.request.contextPath}/MaintainProductServlet?type=MEMBER" class="list-group-item">客服訊息管理</a>
+	
 	</div>
 </div>

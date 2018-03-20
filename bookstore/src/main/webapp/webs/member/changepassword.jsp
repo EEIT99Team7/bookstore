@@ -48,6 +48,13 @@
 						href="${pageContext.request.contextPath}/webs/member/changepassword.jsp"
 						class="list-group-item active">修改密碼</a>
 				</div>
+				<c:if test="${LoginOK.userType =='member'}">
+				<div class="list-group">
+					<a
+						href="${pageContext.request.contextPath}/webs/member/customerservice.jsp"
+						class="list-group-item">聯絡客服</a>
+				</div>
+				</c:if>
 			</div>
 
 			<!-- /.col-lg-9 頁面主內容-->
