@@ -49,13 +49,24 @@ public class MemberDaoJdbc {
 	};
 	
 	@Transactional(readOnly = true)
+	public List<MemberBean> selectAllMember() {
+		List<MemberBean> list = new ArrayList<MemberBean>();
+		Session session = this.getSession();
+		
+		list = session.createQuery("FROM MemberBean WHERE userType = 'member' ", MemberBean.class).list();
+		return list;
+
+	};
+	
+	
+	@Transactional(readOnly = true)
 	public List<MemberBean> selectAll() {
 		List<MemberBean> list = new ArrayList<MemberBean>();
 		Session session = this.getSession();
 		
 		list = session.createQuery("FROM MemberBean", MemberBean.class).list();
 		return list;
-
+		
 	};
 	
 	public void updateRestStatus(String email, Boolean resetState, String resetId) {
