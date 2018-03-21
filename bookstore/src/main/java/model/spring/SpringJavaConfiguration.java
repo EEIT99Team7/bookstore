@@ -18,14 +18,10 @@ import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 
 import _04_ShoppingCart.model.OrderBean;
 import _04_ShoppingCart.model.OrderItemBean;
-<<<<<<< HEAD
 import model.BookcaseBean;
 import model.BookstatusBean;
 import model.CollectionBean;
 import model.LikeBean;
-=======
-import model.CustomerServiceBean;
->>>>>>> branch 'master' of https://github.com/EEIT99Team7/bookstore.git
 import model.MemberBean;
 import model.ProductBean;
 import model.ReviewBean;
@@ -53,10 +49,7 @@ public class SpringJavaConfiguration {
 		props.setProperty("hibernate.show_sql", "true");
 //		props.setProperty("hibernate.current_session_context_class", "thread");
 		builder.addProperties(props);
-
-		builder.addAnnotatedClasses(MemberBean.class,ProductBean.class,OrderBean.class,OrderItemBean.class,BookcaseBean.class,CollectionBean.class,BookstatusBean.class,ReviewBean.class,LikeBean.class,CustomerServiceBean.class);
-
-		builder.addAnnotatedClasses(MemberBean.class,ProductBean.class,OrderBean.class,OrderItemBean.class);
+		builder.addAnnotatedClasses(MemberBean.class,ProductBean.class,OrderBean.class,OrderItemBean.class,BookcaseBean.class,CollectionBean.class,BookstatusBean.class,ReviewBean.class,LikeBean.class);
 		
 		return builder.buildSessionFactory();
 	}
