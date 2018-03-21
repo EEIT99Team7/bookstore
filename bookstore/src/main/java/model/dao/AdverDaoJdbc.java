@@ -12,11 +12,13 @@ import javax.sql.DataSource;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import model.AdverBean;
 import model.ProductBean;
 
 @Repository
+@Transactional
 public class AdverDaoJdbc implements Serializable {
 
 	private static final long serialVersionUID = 1L;

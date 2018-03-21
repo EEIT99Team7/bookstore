@@ -51,7 +51,7 @@ public class RetrieveImageServlet extends HttpServlet {
 			// 分辨讀取哪個表格的圖片欄位
 			String type = request.getParameter("type");
 
-			if (type.equalsIgnoreCase("ADVERTISEMENT")) { // 讀取ADVERTISEMENT表格
+			if ("ADVERTISEMENT".equalsIgnoreCase(type)) { // 讀取ADVERTISEMENT表格
 				Integer nId = 0;
 				try {
 					nId = Integer.parseInt(id);
@@ -64,7 +64,7 @@ public class RetrieveImageServlet extends HttpServlet {
 					is = mBean.getAdverImage().getBinaryStream();
 				}
 
-			} else if (type.equalsIgnoreCase("BOOK")) { // 讀取Book表格
+			} else if ("BOOK".equalsIgnoreCase(type)) { // 讀取Book表格
 				Integer nId = 0;
 				try {
 					nId = Integer.parseInt(id);
@@ -76,7 +76,7 @@ public class RetrieveImageServlet extends HttpServlet {
 				if (mBean.getCoverImage() != null) {
 					is = mBean.getCoverImage().getBinaryStream();
 				}
-			} else if (type.equalsIgnoreCase("MEMBER")) { // 讀取會員圖片
+			} else if ("MEMBER".equalsIgnoreCase(type)) { // 讀取會員圖片
 				Integer nId = 0;
 				try {
 					nId = Integer.parseInt(id);
@@ -97,10 +97,10 @@ public class RetrieveImageServlet extends HttpServlet {
 			// 如果圖片的來源有問題，就送回預設圖片(/images/NoImage.jpg)
 			if (is == null) {
 				//針對會員沒上傳圖片的回傳預設圖片
-				if(type.equalsIgnoreCase("MEMBER")) {
+				if("MEMBER".equalsIgnoreCase(type)) {
 					is = getServletContext().getResourceAsStream("/images/default-member-image.png");
 				}else { //針對其他沒上傳圖片的回傳
-				is = getServletContext().getResourceAsStream("/images/Noimage.jpg");
+					is = getServletContext().getResourceAsStream("/images/Noimage.jpg");
 				}
 			}
 			int len = 0;

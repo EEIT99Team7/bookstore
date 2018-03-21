@@ -12,12 +12,14 @@ import javax.sql.DataSource;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import model.AdverBean;
 import model.CategoryBean;
 import model.ProductBean;
 
 @Repository
+@Transactional
 public class CategoryDaoJdbc implements Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -52,14 +54,14 @@ public class CategoryDaoJdbc implements Serializable {
 		this.selected = selected;
 	}
 
-	public CategoryBean getCategoryById(Integer bookNo) throws SQLException {
+	public CategoryBean getCategoryById(Integer bookNo) {
 		
 		CategoryBean bean = null;
 		String sql = "SELECT bookNo,c_name FROM CATEGORY WHERE bookNo=? ";
 		try (Connection connection = dataSource.getConnection(); 
 			PreparedStatement ps = connection.prepareStatement(sql);) 
 		{
-			ps.setInt(0, bookNo);
+			ps.setInt(1, bookNo);
 			try (ResultSet rs = ps.executeQuery();) {
 				if (rs.next()) {
 					bean = new CategoryBean();
@@ -74,6 +76,7 @@ public class CategoryDaoJdbc implements Serializable {
 		}
 		return bean;
 	}
+	
 	
 	public List<CategoryBean> getCategory() {
 		List<CategoryBean> list = new ArrayList<>();
@@ -100,7 +103,7 @@ public class CategoryDaoJdbc implements Serializable {
 	public String getSelectTag() {
 		String ans = "";
 		List<CategoryBean> cb = getCategory();
-		ans += "<SELECT name='" + getTagName() + "'>";
+		ans += "<SELECT class='form-control' name='" + getTagName() + "'>";
 		for (CategoryBean bean : cb) {
 			int id = bean.getBookNo();
 			String name = bean.getC_name();

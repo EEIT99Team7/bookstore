@@ -29,21 +29,25 @@ public class SystemUtils {
 		sb = new SerialBlob(b);
 		return sb;
 	}
-
-	public static Blob fileToBlob(String imageFileName) throws IOException, SQLException {
+	public static Blob fileToBlob(String imageFileName) 
+			               throws IOException, SQLException {
 		File imageFile = new File(imageFileName);
 		long size = imageFile.length();
 		byte[] b = new byte[(int) size];
 		SerialBlob sb = null;
-		try (FileInputStream fis = new FileInputStream(imageFile);) {
+		try (
+			FileInputStream fis = new FileInputStream(imageFile);
+		) {
 			fis.read(b);
 			sb = new SerialBlob(b);
 		}
 		return sb;
 	}
 
-	public static Clob fileToClob(String textFileName) throws IOException, SQLException {
-		InputStreamReader isr = new InputStreamReader(new FileInputStream(textFileName), "UTF-8");
+	public static Clob fileToClob(String textFileName) 
+			                  throws IOException,	SQLException {
+		InputStreamReader isr = new InputStreamReader(
+				      new FileInputStream(textFileName), "UTF-8");
 		char[] c = new char[8192];
 		StringBuffer buf = new StringBuffer();
 		int len = 0;
@@ -54,8 +58,7 @@ public class SystemUtils {
 		Clob clob = new SerialClob(ca);
 		return clob;
 	}
-
-	public static final String KEY = "KittySnoopyMicky"; // 16, 24, 32
+public static final String KEY = "KittySnoopyMicky"; // 16, 24, 32
 
 	public static String encryptString(String message) {
 		String encryptedString = "";

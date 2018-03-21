@@ -14,32 +14,22 @@
 
     <title>社群書店</title>
 	<script src="${pageContext.request.contextPath}/js/jquery-3.2.1.min.js" ></script>
-	<link rel="stylesheet"
-		href="${pageContext.request.contextPath}/assets/bootstrap-material-design-font/css/material.css">
-	
-	<link rel="stylesheet"
-	href="${pageContext.request.contextPath}/assets/web/assets/mobirise-icons/mobirise-icons.css">
+	<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/bootstrap-material-design-font/css/material.css">	
+	<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/web/assets/mobirise-icons/mobirise-icons.css">
 	<!-- 選定特效 -->
-	<link rel="stylesheet"
-		href="${pageContext.request.contextPath}/assets/et-line-font-plugin/style.css">
-		
+	<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/et-line-font-plugin/style.css">		
 	<link rel="stylesheet" href="${pageContext.request.contextPath}/css/bootstrap.min.css" >
-	
-	<link rel="stylesheet"
-		href="${pageContext.request.contextPath}/assets/animate.css/animate.min.css">
-	<link rel="stylesheet"
-		href="${pageContext.request.contextPath}/assets/theme2/css/style.css">
+	<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/animate.css/animate.min.css">
+	<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/theme2/css/style.css">
 	<!-- 選擇欄位-->
-	<link rel="stylesheet"
-		href="${pageContext.request.contextPath}/assets/mobirise-gallery/style.css">	
-<!-- 	<link rel="stylesheet" -->
-<%-- 		href="${pageContext.request.contextPath}/css/shop-homepage.css"> --%>
+	<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/mobirise-gallery/style.css">	
+	<link rel="stylesheet" href="${pageContext.request.contextPath}/css/shop-homepage.css">
 <style>
-
+/* 調整廣告輪播時間 */
 $('.carousel').carousel({
   interval: 1000
 })
-
+/* 購物車icon設定 */
 .my-cart-icon{
  	position: fixed;
    	z-index: 999;
@@ -51,6 +41,13 @@ $('.carousel').carousel({
    	top: -25px;
    	right:15px;
  	z-index: 1;
+}
+
+
+.mysearchcss{
+ padding-right:25px;
+ margin-right:0px;
+
 }
 </style>
 
@@ -134,7 +131,7 @@ $('.carousel').carousel({
 		
 	<!-- 購物車Modal -->
 	<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-	  <div class="modal-dialog" role="document">
+	  <div class="modal-dialog  modal-lg" role="document">
 	    <div class="modal-content">
 	      <div class="modal-header">
 	        <h5 class="modal-title" id="exampleModalLabel">購物車內容</h5>
@@ -143,8 +140,7 @@ $('.carousel').carousel({
 	        </button>
 	      </div>
 	      <div class="modal-body">
-
-			<!--modal內容 -->
+			<!--modal購物車彈跳視窗內容 -->
 				<table class="table">
 				  <thead>
 				    <tr>
@@ -160,15 +156,21 @@ $('.carousel').carousel({
 	        			<TR height='16'>
 	        			<TD align="center"><img src="${pageContext.request.contextPath}/bookimg.controller?bookId=${anEntry.value.bookID}" width="90" height="120"></TD>
 	          			<TD align="center">${anEntry.value.title}</TD>
-	          			<TD align="center" ><fmt:formatNumber value="${anEntry.value.price * anEntry.value.discount }" pattern="#,###" />元</TD>
+	          			<TD align="center" ><fmt:formatNumber value="${anEntry.value.price * anEntry.value.discount }" pattern="#,###" /></TD>
 	          			<TD align="center" >
 	                		<Input id="newQty${vs.index}" style="width:28px;text-align:right" name="newQty" type="text" value="<fmt:formatNumber value="${anEntry.value.qty}" />" name="qty" onkeypress="return isNumberKey(event)"  />
 	          			</TD>
-	          			<TD style="text-align:right;"><fmt:formatNumber value="${anEntry.value.price * anEntry.value.discount * anEntry.value.qty}" pattern="#,###,###" />元</TD>
-	          			<TD ><Input type="button" name="update" value="修改" onClick="modify(${anEntry.key}, ${anEntry.value.qty}, ${vs.index})">
-	               			<Input type="button" name="delete" value="刪除" onClick="confirmDelete(${anEntry.key},${vs.index})"></TD>
+	          			<TD style="text-align:right;"><fmt:formatNumber value="${anEntry.value.price * anEntry.value.discount * anEntry.value.qty}" pattern="#,###,###" /></TD>	          			
+	          			<TD style="display:none;">
+	          				<Input id="hiddenQty${vs.index}" style="width:28px;text-align:right" name="hiddenqty" type="text" value="<fmt:formatNumber value="${anEntry.value.qty}" />"  />
+	          			</TD>
+	          			<TD ><Input type="button" class="btn btn-success" style="padding:10px" name="update" value="修改" onClick="modify(${anEntry.key}, ${anEntry.value.qty}, ${vs.index})">
+	               			<Input type="button" class="btn btn-danger" style="padding:10px;margin-left:0px;" name="delete" value="刪除" onClick="confirmDelete(${anEntry.key},${vs.index})"></TD>
 	        			</TR>
 	     			</c:forEach>
+	     				<TR height='16'>
+	     					<TD class="font-weight-bold" id="subTotal" colspan="5" align="right">總計&nbsp&nbsp:&nbsp&nbsp<span><fmt:formatNumber value="${ShoppingCart.subtotal }" pattern="#,###,###" /></span>元</TD>
+	     				</TR>
 				  </tbody>
 				</table>
 	      </div>
@@ -179,7 +181,7 @@ $('.carousel').carousel({
 	      </div>
 	    </div>
 	  </div>
-	</div>	
+	</div>		
 
 		
 	<script src="${pageContext.request.contextPath}/assets/tether/tether.min.js"></script>
@@ -211,13 +213,11 @@ $(document).ready(function() {
 })
 $(document).ready(function() {
 	$.get("${pageContext.request.contextPath}/book.controller?bookNo=2",function(data) {
-		//console.log(data);
 		
 		var docFrag = document.createDocumentFragment();
 		
 			for(var i = 0; i < data.length; i++){
-                    //alert(data[i].bookId);
-                    
+                 
                     var eleImg = document.createElement("img");
                     var eleDiv1 = document.createElement("div");//外
                     var eleDiv2 = document.createElement("div");//內
@@ -370,27 +370,32 @@ $(document).ready(function() {
   });		
 })
 
-// 購物車相關
-function checkCartItem(){
-	
-	
-}
-
+//購物車相關
 function confirmDelete(n,index) {
 	
 	if (confirm("確定刪除此項商品 ? ") ) {
+		var x = "#newQty" + index;
+		var tempprice = $(x).parent().next().text();
+		console.log(tempprice);
 		$.get('UpdateItem.do', {'cmd':'DEL','async':'ajax','bookID': n }, function (data) {
-			var x = "#newQty" + index;
- 			$(x).parent().parent().remove();
+ 			$(x).parent().parent().remove();			
+ 			var tempsubtotal = $("#subTotal span").text().replace(/,/g,"");
+ 			console.log(tempsubtotal);
+ 			$("#subTotal span").text("");
+ 			$("#subTotal span").text(tempsubtotal-tempprice);
+ 			$('#shoppingAmount').text($('#shoppingAmount').text()-1);
 		})
 				
 	} else {
 	
 	}
 }
-function modify(key, qty, index) {
+function modify(key,nothing, index) {
 	var x = "newQty" + index;
-	var newQty = document.getElementById(x).value;
+	var x1 = "#newQty" + index;
+	var newQty =$(x1).val();
+	var oldQtyEle ="#hiddenQty"+index;
+	var oldQty =$(oldQtyEle).val();
 	if  (newQty < 0 ) {
 		window.alert ('數量不能小於 0');
 		return ; 
@@ -400,14 +405,30 @@ function modify(key, qty, index) {
 		document.getElementById(x).value = qty;
 		return ; 
 	}
-	if  (newQty == qty ) {
+	if  (newQty == oldQty ) {
 		window.alert ("新、舊數量相同，不必修改");
 		return ; 
 	}
-	if (confirm("確定將此商品的數量由" + qty + " 改為 " + newQty + " ? ") ) {
+	if (confirm("確定將此商品的數量由" + oldQty + " 改為 " + newQty + " ? ") ) {
 		//透過async=ajax呼叫後端不更新頁面程式
 		$.get('UpdateItem.do', {'cmd':'MOD','async':'ajax','bookID': key , 'newQty':newQty }, function (data) {
-			document.getElementById(x).value = newQty;	
+						
+// 			//小計
+			var totalTemp =parseInt($("#subTotal span").text().replace(/,/g,""));
+			//單品價格
+			var priceEle = $(x1).parent().prev();
+			var priceTemp =  parseInt(priceEle.text().replace(/,/g,""));
+			//修改後的數量
+			var newQtyTemp =  parseInt(newQty);
+			//原先的數量
+			var qtyTemp =  parseInt(oldQty);
+			//更新數量
+			$(x1).val(newQtyTemp);
+			$(oldQtyEle).val(newQtyTemp);
+			//更新小計						
+			$(x1).parent().next().text(new Intl.NumberFormat("en-US").format(priceTemp*newQtyTemp));
+			//更新總計
+			$("#subTotal span").text(new Intl.NumberFormat("en-US").format(totalTemp-(priceTemp*qtyTemp)+(priceTemp*newQtyTemp)));
 		})
 	} else {
 		document.getElementById(x).value = qty;
@@ -421,24 +442,7 @@ function isNumberKey(evt)
    }
    return true;
 }
-function Checkout(qty) {
-	if (qty == 0)  {
-		alert("無購買任何商品，不需結帳");
-		return false;
-	}
-	if (confirm("再次確認訂單內容 ? ") ) {
-		return true;
-	} else {
-		return false;
-	}
-}
-function Abort() {
-	if (confirm("確定放棄購物 ? ") ) {
-		return true;
-	} else {
-		return false;
-	}
-}
+
 </script>
   </body>
 </html>

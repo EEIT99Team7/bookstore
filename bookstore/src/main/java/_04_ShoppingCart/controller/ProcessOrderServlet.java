@@ -111,7 +111,7 @@ public class ProcessOrderServlet extends HttpServlet {
 		Set<Integer> set = cart.keySet();
 		for (Integer k : set) {
 			OrderItem oib = cart.get(k);
-			String description = oib.getTitle().substring(0, 12);
+			String description = oib.getTitle();
 
 			// 主鍵必須是null，而不可以是零(流水號自動產生)
 			OrderItemBean oiDAO = new OrderItemBean(null, 0, oib.getBookID(), description, oib.getQty(), oib.getPrice(),
@@ -136,7 +136,9 @@ public class ProcessOrderServlet extends HttpServlet {
 				return;
 			}
 			// 暫時導向至首頁 到資料庫select看是否有新增訂單 (做一個訂單成功的畫面)
-			response.sendRedirect(response.encodeRedirectURL("index.jsp"));
+			request.setAttribute("memberId", memberId);
+			request.getRequestDispatcher("OrderCompleted.jsp").forward(request, response);
+			
 			System.out.println("訂單處理成功 請至資料庫查詢");
 			return;
 		} catch (RuntimeException ex) {

@@ -20,8 +20,7 @@ public class ProductDAO {
 	public Session getopenSession() {
 		return sessionFactory.openSession();
 	}
-	
-	
+		
 	public Session getSession() {
 		return sessionFactory.getCurrentSession();
 	}
@@ -69,8 +68,8 @@ public class ProductDAO {
 	public List<ProductBean> selectBookbyName(String bookName){
 		String sql ="From ProductBean WHERE title LIKE '%"+bookName+"%'";
 		
-		List<ProductBean> temp= this.getSession().createQuery(sql, ProductBean.class).list();
-		
+		List<ProductBean> temp= this.getSession()
+									.createQuery(sql, ProductBean.class).list();		
 		return temp;
 	}
 	

@@ -38,7 +38,7 @@ public class GetImageImpl {
 		}
 		return bean;
 	}
-	//取得會員圖片
+	
 	public MemberBean getMemberImage(Integer Id) {
 		MemberBean bean = null;
 		try {

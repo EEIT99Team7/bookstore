@@ -23,6 +23,7 @@ import model.MemberBean;
 				@WebInitParam(name = "mustLogin1", value = "/webs/member/*"),
 				@WebInitParam(name = "mustLogintest", value = "/MaintainProductServlet"),
 				@WebInitParam(name = "mustLogintest3", value = "/ShowCartContentTest.jsp"),
+				@WebInitParam(name = "mustLogin2", value = "/TurnReivew.controller")
 				
 		})
 public class LoginFilter implements Filter {

@@ -24,9 +24,9 @@ application.getAttribute(WebApplicationContext.ROOT_WEB_APPLICATION_CONTEXT_ATTR
 // AdverDaoJdbc memberDao = (AdverDaoJdbc) context.getBean("adverDaoJdbc");
 // AdverBean ab = memberDao.queryAdById(4);
 // out.println("<h3>"+ab+"</h3>");
-ProductDAO productDao = (ProductDAO) context.getBean("productDAO");
-List<ProductBean> bean= productDao.selectBookbyName("論文");
-out.println("<h3>select="+bean+"</h3>");
+// ProductDAO productDao = (ProductDAO) context.getBean("productDAO");
+// List<ProductBean> bean= productDao.selectBookbyName("論文");
+// out.println("<h3>select="+bean+"</h3>");
 // out.println("<h3>select="+bean+"</h3>");
 // MemberDAOHibernate memberDao = (MemberDAOHibernate) context.getBean("memberDAOHibernate");
 // MemberBean ii= memberDao.selectByEmail("John@yahoo.com.tw");
@@ -36,6 +36,10 @@ out.println("<h3>select="+bean+"</h3>");
 // out.println("<h3>select="+bean3+"</h3>");
 // List<MemberBean> bean4 = memberDao.select();
 // out.println("<h3>select="+bean4+"</h3>");
+
+CollectionDAO collectionDAO= (CollectionDAO)context.getBean("collectionDAO");
+List<Object[]> temp= collectionDAO.selectmemByBookId(1);
+out.println(temp.get(0)[1]);
 %>
 
 </body>

@@ -2,6 +2,7 @@ package controller;
 
 import java.io.IOException;
 import java.util.Collection;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -15,8 +16,10 @@ import org.springframework.web.context.WebApplicationContext;
 
 import model.AdverBean;
 import model.ProductBean;
+import model.ReviewBean;
 import model.dao.AdverDaoJdbc;
 import model.dao.ProductDaoJdbc;
+import model.dao.ReviewDAOHibernate;
 
 @WebServlet("/MaintainProductServlet")
 public class DisplayMaintainProductsServlet extends HttpServlet {
@@ -24,6 +27,7 @@ public class DisplayMaintainProductsServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private ProductDaoJdbc productDaoJdbc;
 	private AdverDaoJdbc adverDaoJdbc;
+	private ReviewDAOHibernate reviewDAOHibernate;
 
 	public void init() throws ServletException {
 		// 此為sping版本的初始化方法。
@@ -31,6 +35,7 @@ public class DisplayMaintainProductsServlet extends HttpServlet {
 				.getAttribute(WebApplicationContext.ROOT_WEB_APPLICATION_CONTEXT_ATTRIBUTE);
 		adverDaoJdbc = (AdverDaoJdbc) context.getBean("adverDaoJdbc");
 		productDaoJdbc = (ProductDaoJdbc) context.getBean("productDaoJdbc");
+		reviewDAOHibernate = (ReviewDAOHibernate)context.getBean("reviewDAOHibernate");
 	}
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -99,7 +104,12 @@ public class DisplayMaintainProductsServlet extends HttpServlet {
 			request.setAttribute("AdverBeans", coll);
 			RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/maintainAdver.jsp");
 			rd.forward(request, response);
-		} else {
+		} else if("REVIEW".equalsIgnoreCase(type)){
+			List<ReviewBean> coll = reviewDAOHibernate.select();
+			request.setAttribute("ReviewBeans", coll);
+			RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/maintainReview.jsp");
+			rd.forward(request, response);
+		}else {
 			// 預設顯示頁面
 			Collection<ProductBean> coll = productDaoJdbc.selectAll();
 

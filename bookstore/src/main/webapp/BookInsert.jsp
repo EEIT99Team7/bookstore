@@ -22,10 +22,8 @@
  pageContext.setAttribute("bab", bab);
  pageContext.setAttribute("cdj", cdj);
  %>
-
     <!-- Bootstrap core CSS -->
     <link href="${pageContext.request.contextPath}/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-
     <!-- Custom styles for this template -->
     <link href="${pageContext.request.contextPath}/css/shop-homepage.css" rel="stylesheet">
 	<!-- 限制內容字數 css  -->
@@ -105,8 +103,8 @@
 					    </div>
 					    <c:set target="${cdj}" property="tagName" value='bookNo' /> 
 						<c:set target="${cdj}" property="selected" value="" /> 
-					    <label for="inputEmail3" class="col-sm-3 col-form-label">書本類別</label>
-					    <div class="col-sm-3">
+					    <label for="inputEmail3" class="col-sm-2 col-form-label">分類</label>
+					    <div class="col-sm-4">
 					    	  ${cdj.selectTag}
 					    </div>
 					    
@@ -117,7 +115,7 @@
 					    <label for="inputEmail3" class="col-sm-2 col-form-label">圖片</label>
 					    <div class="col-sm-10">
 					      <img height='210' width='250' id="bookImg" 
-	                     		src=''  />
+	                     		src='${pageContext.servletContext.contextPath}/getImage'  />
 					      <input type="file" class="form-control-file"  name="bookImgFile" id="bookImgFile" value="">
 					    </div>
 					</div>

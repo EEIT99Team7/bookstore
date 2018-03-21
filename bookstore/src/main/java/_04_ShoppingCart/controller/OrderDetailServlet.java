@@ -17,7 +17,7 @@ import org.springframework.web.context.support.WebApplicationContextUtils;
 import _04_ShoppingCart.model.OrderBean;
 import _04_ShoppingCart.model.OrderItemBean;
 import _04_ShoppingCart.model.dao.OrderDaoImpl;
-//查詢訂單(施工中)
+//查詢訂單
 @WebServlet("/orderDetail.do")
 public class OrderDetailServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;

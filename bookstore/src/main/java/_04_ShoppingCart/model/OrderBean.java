@@ -40,7 +40,9 @@ public class OrderBean implements java.io.Serializable{
 	private String customer;
 	private String phone;
 	@Transient
-	private String orderDateStr;	
+	private String orderDateStr;
+	@Transient
+	private String totalAmountNoDP;
 	@OneToMany(fetch = FetchType.EAGER,mappedBy = "orders",cascade={CascadeType.ALL})
 	Set<OrderItemBean> items = new LinkedHashSet<>();
 		
@@ -183,7 +185,11 @@ public class OrderBean implements java.io.Serializable{
 		return orderDateStr;
 	}
 	
-	
+	public String getTotalAmountNoDp() {
+		String temp[] = totalAmount.toString().split("\\.");
+		
+		return temp[0];
+	}
 
 	
 }

@@ -77,8 +77,8 @@ response.setHeader("Pragma", "no-cache"); //HTTP 1.0 backward compatibility
 	                		<Input id="newQty${vs.index}" style="width:28px;text-align:right" name="newQty" type="text" value="<fmt:formatNumber value="${anEntry.value.qty}" />" name="qty" onkeypress="return isNumberKey(event)"  />
 	          			</TD>
 	          			<TD style="text-align:right;"><fmt:formatNumber value="${anEntry.value.price * anEntry.value.discount * anEntry.value.qty}" pattern="#,###,###" />元</TD>
-	          			<TD ><Input type="button" name="update" value="修改" onClick="modify(${anEntry.key}, ${anEntry.value.qty}, ${vs.index})">
-	               			<Input type="button" name="delete" value="刪除" onClick="confirmDelete(${anEntry.key})"></TD>
+	          			<TD ><Input type="button" class="btn btn-warning btn-sm"  name="update" value="修改" onClick="modify(${anEntry.key}, ${anEntry.value.qty}, ${vs.index})">
+	               			<Input type="button" class="btn btn-secondary  btn-sm" height="20" width="30" name="delete" value="刪除" onClick="confirmDelete(${anEntry.key})"></TD>
 	        			</TR>
 	     			</c:forEach>
 	
@@ -117,6 +117,7 @@ response.setHeader("Pragma", "no-cache"); //HTTP 1.0 backward compatibility
 	<form>
 	   <input type="hidden" name="a"/>
 	</form>
+	
 </div>	
 <script src="${pageContext.request.contextPath}/vendor/jquery/jquery.min.js"></script>
 <script src="${pageContext.request.contextPath}/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
