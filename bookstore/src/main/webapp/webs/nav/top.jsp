@@ -4,20 +4,22 @@
     
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
-      <div class="container">
+      <div class="container navcontainer" >
         <a class="navbar-brand" href="${pageContext.request.contextPath}/index.jsp">社群書店</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarResponsive">
 		<form class="form-inline" action="searchBook.controller" method="GET">
-    		<input class="form-control mr-sm-2" type="search" name="bookName" placeholder="輸入書名" aria-label="Search">
+    		<input class="form-control mr-sm-2 mysearchcss" type="search" name="bookName" placeholder="輸入書名" aria-label="Search">
     		<button class="btn btn-outline-success my-2 my-sm-0" type="submit">找書</button>
+    		<input type="hidden" name="displayType" value="searchBybookName">
+    		<input type="hidden" name="category" value="0">
   		 </form>
 		<!--上方導覽列 -->
           <ul class="navbar-nav ml-auto">
             <li class="nav-item">
-              <a class="nav-link" href="#">找書去</a>
+              <a class="nav-link" href="${pageContext.request.contextPath}/searchBook.controller?displayType=allbooks&category=0">找書去</a>
             </li>
 
             <li class="nav-item active">
@@ -43,6 +45,7 @@
           <img height='40px' width='40px' src='${pageContext.request.contextPath}/getImage?id=${LoginOK.memId}&type=MEMBER'>&nbsp;${LoginOK.userName}
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="${pageContext.request.contextPath}/Members/Self.jsp">個人頁面</a>
           <a class="dropdown-item" href="${pageContext.request.contextPath}/webs/member/editprofile.jsp">會員中心</a>
           <a class="dropdown-item" href="${pageContext.request.contextPath}/OrderList.jsp">查詢訂單</a>
 	    <c:if test="${LoginOK.userType == 'admin'}">
@@ -54,7 +57,7 @@
       </li>
            
       </c:if>
-            
+
 			<li>
        			<div style=" cursor: pointer;">
 <%--        				<A href="<c:url value='ShowCartContentTest.jsp' />" > --%>

@@ -21,12 +21,42 @@
 	scope="page" />
 <title>訂單列表</title>
 
+<!-- 使用 購物車icon-->
+<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/web/assets/mobirise-icons/mobirise-icons.css">
+
 <!-- Bootstrap core CSS -->
 <link href="${pageContext.request.contextPath}/bootstrap4/css/bootstrap.min.css" rel="stylesheet">
 
 <!-- Custom styles for this template -->
 <link href="${pageContext.request.contextPath}/css/shop-homepage.css" rel="stylesheet">
 
+<style>
+.mysearchcss{
+	height:50px;
+	padding-right:10px;
+}
+.btn-outline-success{
+	padding:10px;
+	padding-left:30px;
+	padding-right:30px
+}
+
+.my-cart-icon{
+ 	position: fixed;
+   	z-index: 999;
+ 
+}
+.badge-notify{
+    background:red;
+   	position:relative;
+   	top: -25px;
+   	right:15px;
+ 	z-index: 1;
+}
+th{
+text-align:center;
+}
+</style>
 </head>
 <body>
 
@@ -34,21 +64,22 @@
 	<jsp:include page="/webs/nav/top.jsp" />
     <p/>
     <center>
-	<table border="2" bordercolor="blue" style="background:#EFEFFB;">
+    <div class="container">
+    
+    <h2>${LoginOK.nickName}的訂購紀錄</h2>
+	<table class="table table-hover ">
 
-		<tr height='50'>
-			<th   colspan="4" align="center">${LoginOK.nickName}的訂購紀錄</th>
-		</tr>
-		<tr height='36' >
-			<th align="center">訂單編號</th>
-			<th align="center">訂購日期</th>
-			<th align="center">總金額</th>
-			<th align="center">送貨地址</th>
+		<tr height='40' class="table-info" >
+			<th >訂單編號</th>
+			<th width="100" >訂購日期</th>
+			<th width="80" >總金額</th>
+			<th width="400" >送貨地址</th>
 		</tr>
 		
 		<jsp:setProperty name="orderBeans" property="memberId" value="${LoginOK.userName}"/>
 		<c:forEach var="anOrderBean" varStatus="stat" 	items="${orderBeans.allOrders}">
 				<c:if test="${anOrderBean.memberId==LoginOK.userName}">
+
 						<TR height='30'>
 							<TD width="86" align="center">
 							    <a  href='<c:url value='orderDetail.do?memberId=${LoginOK.userName}&orderNo=${anOrderBean.orderNo}' />'>
@@ -57,7 +88,7 @@
 							  </TD>
 <%-- 							<TD width="100" align="center">${anOrderBean.orderDateStr}</TD> --%>
 							<TD width="100" align="center">${anOrderBean.orderDateStr}</TD>
-							<TD width="80" align="center">${anOrderBean.totalAmount}</TD>
+							<TD width="80" align="center">${anOrderBean.totalAmountNoDp}</TD>
 							<TD width="400" align="left">&nbsp;${anOrderBean.shippingAddress}</TD>
 							<!--
 							<%-- 
@@ -70,12 +101,14 @@
 								--%>
   						 -->
 						</TR>
+						
 				</c:if>
 		</c:forEach>
 		<tr height='36'>
 			<td align="center" colspan="4"><a href="<c:url value='index.jsp' />">回首頁</a></td>
 		</tr>
 	</TABLE>
+	</div>
 	</center>
 	<!--
 		<%-- 

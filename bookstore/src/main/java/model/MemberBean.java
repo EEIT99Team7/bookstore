@@ -38,6 +38,7 @@ public class MemberBean implements Serializable {
 
 	public MemberBean() {
 		super();
+		// TODO Auto-generated constructor stub
 	}
 	
 	public MemberBean(Integer memId, String userName, String nickName, String email, String pw, String addr,

@@ -31,27 +31,24 @@
 	<!-- 引用共同導覽列 -->
 	<jsp:include page="/webs/nav/top.jsp" />
 	<div class="container">
-		<br>
-		<br>
-		<TABLE border="2" bordercolor="blue" style="background:#F0E4F4">
-			<tr height='50'>
+	<br>
+		<TABLE   class="table">
+			<tr height='50'class="table-info" style="text-align:center;border-style: none;">
 				<th align="center" colspan="7"><h3>${LoginOK.nickName}的訂單明細</h3></th>
 			</tr>
-			<tr height='36'>
+			<tr height='36'class="table-info">
 				<td colspan="7">
 				<table border='0'>
 					<tr>
 						<td align="Left" width="500px">出貨地址:${OrderBean.shippingAddress}</td>
-						<td align="center" width="200px">訂購日期:${OrderBean.orderDate}</td>
-		
-		
+						<td align="center" width="200px">訂購日期:${OrderBean.orderDateStr}</td>		
 						<td align="right" width="150px">訂單編號:${OrderBean.orderNo}</td>
 					</tr>
 				</table>
 				</td>
 			</tr>
-			<tr height='36'>
-				<th width="300px" align="center">書籍編號</th>
+			<tr height='36' class="table-info">
+				<th width="300px" align="center">書籍圖片</th>
 				<th width="1000px" align="center">書籍資訊</th>
 				<th width="100px" align="center">單價</th>
 				<th width="100px" align="center">數量</th>
@@ -67,23 +64,28 @@
 						<c:set var="aColor" value="#EBFFEB" />
 					</c:otherwise>
 				</c:choose>
-				<tr bgColor="${aColor}" height='30'>
-					<td  align="center">${aBean.bookId}</td>
-					<td  align="left">${aBean.description}</td>
-					<td  align="right">${aBean.unitPrice}&nbsp;</td>
-					<td  align="right">${aBean.quantity}&nbsp;</td>
+				<tr  height='30'>
+					<td  align="center"><img height="150" width="100" src="<%=request.getContextPath()%>/bookimg.controller?bookId=${aBean.bookId}" alt="" title=""
+							media-simple="true"></td>
+					<td  align="left"><a href="${pageContext.request.contextPath}/bookPages.controller?bookId=${aBean.bookId}">${aBean.description}</a></td>
 					<td  align="right">
-					
-					<fmt:formatNumber	
-						value="${aBean.unitPrice*aBean.discount*aBean.quantity}"
-						pattern="#,###,###" />元</td>
-						<c:set var="subtotal" value="${ subtotal + aBean.unitPrice * aBean.discount * aBean.quantity }" />
+						<fmt:formatNumber	
+							value="${aBean.unitPrice}"
+							pattern="#,###,###" />
+					</td>
+					<td  align="right">${aBean.quantity}&nbsp;</td>
+					<td  align="right">					
+						<fmt:formatNumber	
+							value="${aBean.unitPrice*aBean.discount*aBean.quantity}"
+							pattern="#,###,###" />元
+						</td>
+					<c:set var="subtotal" value="${ subtotal + aBean.unitPrice * aBean.discount * aBean.quantity }" />
 				</tr>
 			</c:forEach>
 		
 			<tr height='40'>
-				<TD width="300px" align="right">總金額</TD>
-				<TD width="300px" align="right">
+				<TD width="450px" align="right" style="font-size:50px">總金額</TD>
+				<TD width="450px" align="right" style="font-size:50px">
 				<fmt:formatNumber value="${OrderBean.totalAmount}" pattern="#,###,###" />元</TD>
 			</tr>
 		</TABLE>

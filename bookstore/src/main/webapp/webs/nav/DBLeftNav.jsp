@@ -5,9 +5,12 @@
 <div class="col-lg-3">
 	<h1 class="my-4">管理系統</h1>
 	<div class="list-group">
-	  <a href="${pageContext.request.contextPath}/MaintainProductServlet?type=BOOK" class="list-group-item">更改書籍資訊</a>
-	  <a href="${pageContext.request.contextPath}/MaintainProductServlet?type=ADVER" class="list-group-item">更改廣告資訊</a>
-	  <a href="${pageContext.request.contextPath}/MaintainProductServlet?type=MEMBER" class="list-group-item">客服訊息管理</a>
-	
+
+	  <a href="${pageContext.request.contextPath}/MaintainProductServlet?type=BOOK" class="list-group-item">書籍管理</a>
+	  <a href="#" class="list-group-item">類別管理</a>
+	  <a href="${pageContext.request.contextPath}/MaintainProductServlet?type=ADVER" class="list-group-item">廣告管理</a>
+	  <a href="${pageContext.request.contextPath}/MaintainProductServlet?type=REVIEW" class="list-group-item">書評管理</a>
+	  <a href="${pageContext.request.contextPath}/MaintainProductServlet?type=MEMBER" class="list-group-item">客服管理</a>
+
 	</div>
 </div>

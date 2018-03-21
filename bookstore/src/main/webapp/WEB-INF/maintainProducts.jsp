@@ -20,6 +20,16 @@
 	<!-- 限制內容字數 css  -->
 	<link  href="${pageContext.request.contextPath}/css/ellipsis.css" rel="stylesheet">
 	<!-- 顯示邊界 調整DIV用 -->
+	<style>
+	.mysearchcss{
+		height:50px;
+	}
+	.btn-outline-success{
+		padding:10px;
+		padding-left:30px;
+		padding-right:30px
+	}	
+	</style>
 </head>
  <body>
 

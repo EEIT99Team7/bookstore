@@ -2,6 +2,7 @@ package controller;
 
 import java.io.IOException;
 import java.util.Collection;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -16,9 +17,11 @@ import org.springframework.web.context.WebApplicationContext;
 import model.AdverBean;
 import model.MemberBean;
 import model.ProductBean;
+import model.ReviewBean;
 import model.dao.AdverDaoJdbc;
 import model.dao.MemberDaoJdbc;
 import model.dao.ProductDaoJdbc;
+import model.dao.ReviewDAOHibernate;
 
 @WebServlet("/MaintainProductServlet")
 public class DisplayMaintainProductsServlet extends HttpServlet {
@@ -26,6 +29,7 @@ public class DisplayMaintainProductsServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private ProductDaoJdbc productDaoJdbc;
 	private AdverDaoJdbc adverDaoJdbc;
+	private ReviewDAOHibernate reviewDAOHibernate;
 	private MemberDaoJdbc  memberDaoJdbc;
 
 	public void init() throws ServletException {
@@ -34,6 +38,7 @@ public class DisplayMaintainProductsServlet extends HttpServlet {
 				.getAttribute(WebApplicationContext.ROOT_WEB_APPLICATION_CONTEXT_ATTRIBUTE);
 		adverDaoJdbc = (AdverDaoJdbc) context.getBean("adverDaoJdbc");
 		productDaoJdbc = (ProductDaoJdbc) context.getBean("productDaoJdbc");
+		reviewDAOHibernate = (ReviewDAOHibernate)context.getBean("reviewDAOHibernate");
 		memberDaoJdbc = (MemberDaoJdbc) context.getBean("memberDaoJdbc");
 	}
 
@@ -110,7 +115,12 @@ public class DisplayMaintainProductsServlet extends HttpServlet {
 			RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/maintainMember.jsp");
 			rd.forward(request, response);
 			
-		} else {
+		} else if("REVIEW".equalsIgnoreCase(type)){
+			List<ReviewBean> coll = reviewDAOHibernate.select();
+			request.setAttribute("ReviewBeans", coll);
+			RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/maintainReview.jsp");
+			rd.forward(request, response);
+		}else {
 			// 預設顯示頁面
 			Collection<ProductBean> coll = productDaoJdbc.selectAll();
 

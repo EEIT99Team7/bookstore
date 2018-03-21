@@ -25,6 +25,27 @@ public class LikeDAOHibernate {
 						Long.class)
 				.uniqueResult();
 	}
+<<<<<<< HEAD
+	// 檢查
+	public Long check(Integer reviewId) {
+		return this.getSession()
+				.createQuery("Select count(memlike) From LikeBean where reviewId ='" + reviewId + "'",
+						Long.class)
+				.uniqueResult();
+	}
+
+	// 按讚
+	public LikeBean likeplus(LikeBean bean) {
+		if (bean != null) {
+			LikeBean temp = this.getSession().createQuery("From LikeBean where reviewId =? and memID=?", LikeBean.class)
+					.setParameter(0, bean.getReviewId()).setParameter(1, bean.getMemID()).uniqueResult();
+			if (temp == null) {
+				bean.setMemlike(true);
+				this.getSession().save(bean);
+				return bean;
+			} else {
+				System.out.println("error");
+=======
 
 	// 按讚
 	public LikeBean check(LikeBean bean) {
@@ -37,6 +58,7 @@ public class LikeDAOHibernate {
 				return bean;
 			} else {
 				System.out.println("不能重複按讚");
+>>>>>>> branch 'master' of https://github.com/EEIT99Team7/bookstore.git
 			}
 		}
 		return null;

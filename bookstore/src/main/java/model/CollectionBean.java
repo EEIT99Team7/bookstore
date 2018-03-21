@@ -5,6 +5,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Transient;
+import javax.transaction.Transactional;
 
 @Entity
 @Table(name="Collection")
@@ -15,6 +17,7 @@ public class CollectionBean {
 	private	 Integer memID ;
 	private	 Integer bookId  ;
 	private	 Integer BCID;
+	@Transient
 	private	 Integer Bstatus;
 	
 	public CollectionBean() {
@@ -27,6 +30,14 @@ public class CollectionBean {
 		//BCID = bCID;
 		//Bstatus = bstatus;
 	}
+	public CollectionBean(Integer memID, Integer bookId,Integer BCID) {
+		
+		this.memID = memID;
+		this.bookId = bookId;
+		this.BCID =BCID;
+		
+	}
+	
 	@Override
 	public String toString() {
 		return "CollectionBean [ID=" + ID + ", memID=" + memID + ", bookId=" + bookId + ", BCID=" + BCID + ", Bstatus="
@@ -63,4 +74,6 @@ public class CollectionBean {
 		Bstatus = bstatus;
 	}
 
+	
+	
 }

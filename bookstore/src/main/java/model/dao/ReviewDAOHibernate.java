@@ -44,9 +44,10 @@ public class ReviewDAOHibernate {
 
 	// 書的所有評論
 	public List<Object[]> selectByBookId(Integer bookId) {
-		return (List<Object[]>)(this.getSession().createQuery("SELECT m.nickname,r.content,r.make,r.score,r.reviewId,m.memId From ReviewBean r JOIN MemberBean m ON r.memID =m.memId  where r.bookId ='" + bookId + "'", Object[].class).list());
+		return (List<Object[]>)(this.getSession().createQuery("SELECT m.nickName,r.content,r.make,r.score,r.reviewId,m.memId From ReviewBean r JOIN MemberBean m ON r.memID =m.memId  where r.statusNo = true and r.bookId ='" + bookId + "'", Object[].class).list());
 	}
-
+	
+	
 	// 新增書評
 	public ReviewBean insert(ReviewBean bean) {
 		if (bean != null) {
@@ -83,6 +84,16 @@ public class ReviewDAOHibernate {
 		}
 		return result;
 	}
+	
+//	// 切換書評狀態
+//	public boolean changeStatus(Integer reviewId) {
+//		Boolean result = this.getSession().createQuery("Select statusNo From ReviewBean where reviewId ='"+ reviewId +"'", Boolean.class).uniqueResult();
+//		if(result == true) {
+//			return false;
+//		}else {
+//			return true;
+//		}
+//	}
 
 	// // 計算平均星星數
 	// public Double avgScore(Integer bookId) {

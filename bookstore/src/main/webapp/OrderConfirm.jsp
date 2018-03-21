@@ -82,27 +82,26 @@ request.setAttribute("stTelUTF8", stTelUTF8);
 	<CENTER>
 		<img alt="" src="${pageContext.request.contextPath}/images/time_line_step2_zh-tw.png">
 		<FORM action="<c:url value='ProcessOrder.do' />" method="POST">
-			<TABLE border='1' width="810"
-				style="background: #F5EBFF; border-color: rgb(100, 100, 255); border-style: outset;">
+			<TABLE class="table" >
 				<TR>
 
 					<TD
-						style="text-align: center; border-color: #FFBD32; border-style: ridge;">請確認下列訊息：</TD>
+						style="text-align: center; ">請確認下列訊息：</TD>
 
 				</TR>
 				<TR>
 
 					<TD
-						style="text-align: left; border-color: #FFBD32; border-style: ridge;">購物車內容:</TD>
+						style="text-align: left;">購物車內容:</TD>
 				</TR>
 
 				<TR>
 					<TD colspan='3'>
 
-						<TABLE border='1'
-							style="background: #FFE7CD; border-color: rgb(100, 100, 255);">
+						<TABLE border='1'>
 
 							<TR>
+								<TH style="text-align: center; font-size: 12pt;" width="200">書籍圖片</TH>
 								<TH style="text-align: center; font-size: 12pt;" width="350">書籍名稱</TH>
 								<TH style="text-align: center; font-size: 12pt;" width="80">單價</TH>
 								<TH style="text-align: center; font-size: 12pt;" width="60">數量</TH>
@@ -113,6 +112,10 @@ request.setAttribute("stTelUTF8", stTelUTF8);
 								items="${ShoppingCart.content}">
 
 								<TR height='16'>
+									<TD style="text-align: center; font-size: 11pt;">
+										<img height="150" width="120" src="<%=request.getContextPath()%>/bookimg.controller?bookId=${anEntry.value.bookID}" alt="" title=""
+										media-simple="true">
+									</TD>
 									<TD style="text-align: left; font-size: 11pt;">${anEntry.value.title}</TD>
 									<TD style="text-align: right; font-size: 11pt;"><fmt:formatNumber
 											value="${anEntry.value.price * anEntry.value.discount }"
@@ -126,7 +129,7 @@ request.setAttribute("stTelUTF8", stTelUTF8);
 							</c:forEach>
 
 							<TR height='16'>
-								<TD style="text-align: right; font-size: 11pt;" colspan='5'>合計金額：</TD>
+								<TD style="text-align: right; font-size: 11pt;" colspan='4'>合計金額：</TD>
 								<TD style="text-align: right; font-size: 11pt;"><fmt:formatNumber
 										value="${ShoppingCart.subtotal}" pattern="#,###,###" />元</TD>
 
@@ -149,7 +152,8 @@ request.setAttribute("stTelUTF8", stTelUTF8);
 						 <input type="radio" name="payment" id="paymentRadio1" value="超商取貨">
 						 <label for="paymentRadio1">超商付款取貨</label> 
 						 <input type="radio" name="payment" id="paymentRadio2" value="歐付寶">
-						 <label for="paymentRadio2">歐付寶付款</label>
+						 <label for="paymentRadio2">信用卡付款</label>
+						 <img height="50" width="70" src="${pageContext.request.contextPath}/images/allpay.jpg">
 						 <span id="storechoicespan"></span>
 					</TD>
 				</TR>
@@ -162,7 +166,6 @@ request.setAttribute("stTelUTF8", stTelUTF8);
 					<TD style="text-align: left; font-size: 15pt;">姓名：<input
 						type="text" class="form-control" name="memberName" id="memberName"
 						placeholder="${LoginOK.userName}" readonly></TD>
-
 				</TR>
 
 				<TR height='20'>
@@ -188,7 +191,6 @@ request.setAttribute("stTelUTF8", stTelUTF8);
 					<TD style="text-align: left; font-size: 15pt;">姓名：<input
 						type="text" class="form-control" name="receiverName" id="receiverName"
 						value=""></TD>
-
 				</TR>
 
 				<TR height='20'>
@@ -202,14 +204,11 @@ request.setAttribute("stTelUTF8", stTelUTF8);
 						type="text" class="form-control" name="receiverPhone" id="receiverPhone"
 						value=""></TD>
 				</TR>
-				
-					
-
+								
 				<TR height='20'>
 					<TD style="text-align: left; font-size: 15pt;">超商名稱：<input
 						type="text" class="form-control" name="storeName" id="storeName"
 						value="${stNameUTF8}"></TD>
-
 				</TR>
 
 				<TR height='20'>
@@ -227,12 +226,12 @@ request.setAttribute("stTelUTF8", stTelUTF8);
 
 			</TABLE>
 			<P />
-			<INPUT TYPE="hidden" name="finalDecision" value=""> <INPUT
-				TYPE="SUBMIT" name="OrderBtn" value="確定送出"
-				onclick="return reconfirmOrder();"> <INPUT TYPE="SUBMIT"
-				name="CancelBtn" value="取消訂單" onclick="return cancelOrder();">
+			<INPUT  TYPE="hidden" name="finalDecision" value=""> 
+			<INPUT class="btn btn-primary" TYPE="SUBMIT" name="OrderBtn" value="確定送出" onclick="return reconfirmOrder();"> 
+			<INPUT class="btn btn-secondary" TYPE="SUBMIT" name="CancelBtn" value="取消訂單" onclick="return cancelOrder();">
 		</FORM>
 	</CENTER>
+	
 	</div>
 	<script src="${pageContext.request.contextPath}/vendor/jquery/jquery.min.js"></script>
 	<script src="${pageContext.request.contextPath}/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
@@ -261,11 +260,11 @@ request.setAttribute("stTelUTF8", stTelUTF8);
 		$("input[name='payment']").change(function(){
 			console.log($(this).val());
 			if($(this).val()=="超商取貨"){
-			$("#storechoicespan").html($("<input value='選擇門市' type='button'>").click(function(){
+			$("#storechoicespan").html($("<input class='btn btn-primary' value='選擇門市' type='button'>").click(function(){
 				location.href="http://map.ezship.com.tw/ezship_map_web_2014.jsp?rtURL=http://localhost:8080/bookstore/OrderConfirm.jsp"}));
 			}
 			else{
-			$("#storechoicespan").html("歐");	
+			$("#storechoicespan").html("");	
 				
 			}
 		})

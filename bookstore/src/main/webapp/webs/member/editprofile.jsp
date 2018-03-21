@@ -12,7 +12,11 @@
 <meta name="description" content="">
 <meta name="author" content="">
 
+
 <title>會員中心</title>
+
+<!-- 使用 購物車icon-->
+<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/web/assets/mobirise-icons/mobirise-icons.css">
 
 <!-- Bootstrap core CSS -->
 <link
@@ -49,6 +53,40 @@
 #loadingImg {
 	display:none;
 }
+.mysearchcss{
+	height:50px
+}
+.btn-outline-success{
+	padding:10px;
+	padding-left:30px;
+	padding-right:30px
+}
+
+.my-cart-icon{
+ 	position: fixed;
+   	z-index: 999;
+ 
+}
+.badge-notify{
+    background:red;
+   	position:relative;
+   	top: -25px;
+   	right:15px;
+ 	z-index: 1;
+}
+
+
+.mysearchcss{
+ padding-right:35px;
+ padding-top:25px;
+ padding-bottom:25px;
+ margin-right:0px;
+
+}
+
+
+
+
 </style>
 </head>
 <body>

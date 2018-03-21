@@ -29,7 +29,7 @@ public class SpringMVCJavaConfiguration implements WebMvcConfigurer {
 //		registry.addInterceptor(
 //				new DemoHandlerInterceptor()).addPathPatterns("/secure/*");
 	}
-
+	
 	@Autowired
 	private ServletContext applicaton;
 	

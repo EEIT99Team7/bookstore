@@ -63,6 +63,22 @@
 		<property name="url" value="/webs/bookpages/ShowSelectedBK.jsp"></property>
 	</bean> 
 
-
+	<bean id="select.Book" class="org.springframework.web.servlet.view.InternalResourceView">
+		<property name="url" value="/Members/Self.jsp"></property>
+	</bean>
+	
+	<bean id="selectmem" class="org.springframework.web.servlet.view.InternalResourceView">
+		<property name="url" value="/Members/SelfOther.jsp"></property>
+	</bean>
+	
+	
+		<bean id="review.insert" class="org.springframework.web.servlet.view.InternalResourceView">
+		<property name="url" value="/InsertReview.jsp"></property>
+	</bean>  
+	
+		<bean id="reviewInsert.Success" class="org.springframework.web.servlet.view.RedirectView">
+		<property name="contextRelative" value="true"></property>
+		<property name="url" value="/webs/bookpages/BookEach.jsp"></property>
+	</bean> 
 	
 </beans>
