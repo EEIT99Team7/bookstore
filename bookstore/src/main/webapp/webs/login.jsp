@@ -54,6 +54,7 @@
             max-width: 450px;
             text-align: center;
         }
+
         .mysearchcss{
 		height:50px
 		}
@@ -62,6 +63,11 @@
 		padding-left:30px;
 		padding-right:30px
 		}
+
+        #myMOUSE{
+         cursor: pointer;
+          }
+
     </style>
     
 
@@ -87,7 +93,9 @@
               
 				    <div class="sub">
                                 <input type="submit" class="btn btn-success btn-block" value="登入" /><br/>
-                                <div class="btn-block g-signin2" data-onsuccess="onSignIn"></div>
+                                <img id="myMOUSE" width="170px" src="${pageContext.request.contextPath}/images/fb_login.PNG">
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                <img id="myMOUSE" width="170px" src="${pageContext.request.contextPath}/images/google_login.PNG"><br/>
                                 <a href="${pageContext.request.contextPath}/webs/forgot.jsp">忘記密碼?</a><span>&nbsp;&nbsp;|&nbsp;&nbsp;</span>
                                 <a href="${pageContext.request.contextPath}/webs/register.jsp">加入會員</a>
                             </div>

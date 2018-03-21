@@ -1,10 +1,14 @@
 package model;
 
-import java.io.*;
-import java.sql.*;
+import java.io.Serializable;
+import java.sql.Blob;
 import java.util.Date;
 
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
 // 本類別封裝單筆會員資料
 @Entity
@@ -29,6 +33,8 @@ public class MemberBean implements Serializable {
 	private Boolean resetState;
 	private String resetId;
 	private String description;
+	
+
 
 	public MemberBean() {
 		super();
@@ -55,6 +61,18 @@ public class MemberBean implements Serializable {
 		this.resetState = resetState;
 		this.resetId = resetId;
 		this.description = description;
+	}
+
+	
+	
+	
+	@Override
+	public String toString() {
+		return "MemberBean [memId=" + memId + ", userName=" + userName + ", nickName=" + nickName + ", email=" + email
+				+ ", pw=" + pw + ", addr=" + addr + ", phone=" + phone + ", sex=" + sex + ", birthDate=" + birthDate
+				+ ", userType=" + userType + ", memberImage=" + memberImage + ", fileName=" + fileName
+				+ ", unpaid_amount=" + unpaid_amount + ", resetState=" + resetState + ", resetId=" + resetId
+				+ ", description=" + description + "]";
 	}
 
 	public Integer getMemId() {

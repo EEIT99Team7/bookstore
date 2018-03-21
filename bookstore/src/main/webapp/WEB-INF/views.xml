@@ -39,6 +39,18 @@
 		class="org.springframework.web.servlet.view.InternalResourceView">
 		<property name="url" value="/webs/forgot.jsp"></property>
 	</bean>
+	
+	<bean id="customerService"
+		class="org.springframework.web.servlet.view.RedirectView">
+		<property name="contextRelative" value="true"></property>
+		<property name="url" value="/webs/member/customerservice.jsp"></property>
+	</bean>
+	
+	<bean id="customerServiceReply"
+		class="org.springframework.web.servlet.view.InternalResourceView">
+		<property name="url" value="/MaintainProductServlet?type=MEMBER"></property>
+	</bean>
+	
 
 	<bean id="book.select" class="org.springframework.web.servlet.view.InternalResourceView">
 		<property name="url" value="/webs/bookpages/BookEach.jsp"></property>

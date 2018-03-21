@@ -10,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
+<<<<<<< HEAD
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartRequest;
@@ -94,3 +95,39 @@ public class ReviewInsertTurn {
 	 }
  }
 
+=======
+
+import model.ProductBean;
+import model.ReviewBean;
+import model.dao.ProductDAO;
+import model.dao.ReviewDAOHibernate;
+
+@Controller
+public class ReviewInsertTurn {
+//	@InitBinder
+//	public void initializer(WebDataBinder webDataBinder) {
+//		webDataBinder.registerCustomEditor(java.util.Date.class,
+//				new CustomDateEditor(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss"), true));
+//	}
+	
+	@Autowired
+	private ReviewDAOHibernate reviewDAO = null;
+	@Autowired
+	private ProductDAO productDAOHibernate = null;
+
+	@Autowired
+	private ApplicationContext context;
+
+	@RequestMapping(path = { "/TurnReivew.controller" })
+	public String method(Integer bookId,String insertp, ReviewBean bean, BindingResult bindingResult, Model model, String content,String score) {
+//			System.out.println(score);
+		
+		ProductBean book = productDAOHibernate.selectbookId(bookId);
+		model.addAttribute("book", book);
+		return "review.insert";
+		
+			
+	}
+
+}
+>>>>>>> branch 'master' of https://github.com/EEIT99Team7/bookstore.git

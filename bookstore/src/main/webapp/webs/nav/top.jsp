@@ -57,9 +57,7 @@
       </li>
            
       </c:if>
-<!--             <li class="nav-item"> -->
-<!--               <a class="nav-link" href="#">聯絡我們</a> -->
-<!--             </li> -->
+
 			<li>
        			<div style=" cursor: pointer;">
 <%--        				<A href="<c:url value='ShowCartContentTest.jsp' />" > --%>

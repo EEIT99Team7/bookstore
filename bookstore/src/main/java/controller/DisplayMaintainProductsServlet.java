@@ -15,9 +15,11 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.web.context.WebApplicationContext;
 
 import model.AdverBean;
+import model.MemberBean;
 import model.ProductBean;
 import model.ReviewBean;
 import model.dao.AdverDaoJdbc;
+import model.dao.MemberDaoJdbc;
 import model.dao.ProductDaoJdbc;
 import model.dao.ReviewDAOHibernate;
 
@@ -28,6 +30,7 @@ public class DisplayMaintainProductsServlet extends HttpServlet {
 	private ProductDaoJdbc productDaoJdbc;
 	private AdverDaoJdbc adverDaoJdbc;
 	private ReviewDAOHibernate reviewDAOHibernate;
+	private MemberDaoJdbc  memberDaoJdbc;
 
 	public void init() throws ServletException {
 		// 此為sping版本的初始化方法。
@@ -36,6 +39,7 @@ public class DisplayMaintainProductsServlet extends HttpServlet {
 		adverDaoJdbc = (AdverDaoJdbc) context.getBean("adverDaoJdbc");
 		productDaoJdbc = (ProductDaoJdbc) context.getBean("productDaoJdbc");
 		reviewDAOHibernate = (ReviewDAOHibernate)context.getBean("reviewDAOHibernate");
+		memberDaoJdbc = (MemberDaoJdbc) context.getBean("memberDaoJdbc");
 	}
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -67,6 +71,7 @@ public class DisplayMaintainProductsServlet extends HttpServlet {
 		// 本類別負責讀取資料庫內eBook表格內某一頁的紀錄，並能新增紀錄、修改紀錄、刪除記錄等
 		// BookDao bab = null;
 		String type = request.getParameter("type");
+
 		if ("BOOK".equalsIgnoreCase(type)) {
 			try {
 				// String pageNoStr = request.getParameter("pageNo");
@@ -104,6 +109,12 @@ public class DisplayMaintainProductsServlet extends HttpServlet {
 			request.setAttribute("AdverBeans", coll);
 			RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/maintainAdver.jsp");
 			rd.forward(request, response);
+		}else if("MEMBER".equalsIgnoreCase(type)) {
+			Collection<MemberBean> coll = memberDaoJdbc.selectAllMember();
+			request.setAttribute("MemberBeans", coll);
+			RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/maintainMember.jsp");
+			rd.forward(request, response);
+			
 		} else if("REVIEW".equalsIgnoreCase(type)){
 			List<ReviewBean> coll = reviewDAOHibernate.select();
 			request.setAttribute("ReviewBeans", coll);
