@@ -39,15 +39,20 @@ public class ReviewDAOHibernate {
 
 	// 會員評過書評
 	public List<Object[]> selectByMemId(Integer memID) {
-		return (List<Object[]>)(this.getSession().createQuery("select p.title,r.content,r.make,r.score From ReviewBean r JOIN ProductBean p ON r.bookId =p.bookId where r.memId ='" + memID + "'", Object[].class).list());
+		return (List<Object[]>) (this.getSession().createQuery(
+				"select p.title,r.content,r.make,r.score From ReviewBean r JOIN ProductBean p ON r.bookId =p.bookId where r.memId ='"
+						+ memID + "'",
+				Object[].class).list());
 	}
 
 	// 書的所有評論
 	public List<Object[]> selectByBookId(Integer bookId) {
-		return (List<Object[]>)(this.getSession().createQuery("SELECT m.nickName,r.content,r.make,r.score,r.reviewId,m.memId From ReviewBean r JOIN MemberBean m ON r.memID =m.memId  where r.statusNo = true and r.bookId ='" + bookId + "'", Object[].class).list());
+		return (List<Object[]>) (this.getSession().createQuery(
+				"SELECT m.nickName,r.content,r.make,r.score,r.reviewId,m.memId From ReviewBean r JOIN MemberBean m ON r.memID =m.memId  where r.statusNo = true and r.bookId ='"
+						+ bookId + "'",
+				Object[].class).list());
 	}
-	
-	
+
 	// 新增書評
 	public ReviewBean insert(ReviewBean bean) {
 		if (bean != null) {
@@ -84,16 +89,33 @@ public class ReviewDAOHibernate {
 		}
 		return result;
 	}
-	
-//	// 切換書評狀態
-//	public boolean changeStatus(Integer reviewId) {
-//		Boolean result = this.getSession().createQuery("Select statusNo From ReviewBean where reviewId ='"+ reviewId +"'", Boolean.class).uniqueResult();
-//		if(result == true) {
-//			return false;
-//		}else {
-//			return true;
-//		}
-//	}
+
+	// 切換書評狀態
+	public ReviewBean changeStatus(Integer reviewId) {
+		ReviewBean result = this.getSession()
+				.createQuery("From ReviewBean where	reviewId='" + reviewId + "'", ReviewBean.class).uniqueResult();
+		if (result.isStatusNo() == true) {
+			result.setStatusNo(false);
+			return result;
+		} else if (result.isStatusNo() == false) {
+			result.setStatusNo(true);
+			return result;
+		}
+		return result;
+	}
+
+	// // 切換書評狀態
+	// public boolean changeStatus(Integer reviewId) {
+	// Boolean result = this.getSession()
+	// .createQuery("Select statusNo From ReviewBean where reviewId ='" + reviewId +
+	// "'", Boolean.class)
+	// .uniqueResult();
+	// if (result == true) {
+	// return false;
+	// } else {
+	// return true;
+	// }
+	// }
 
 	// // 計算平均星星數
 	// public Double avgScore(Integer bookId) {
