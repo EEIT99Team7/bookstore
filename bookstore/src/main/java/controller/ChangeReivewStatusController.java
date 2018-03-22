@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.view.RedirectView;
 
 import com.google.gson.Gson;
 
@@ -17,6 +19,7 @@ import model.dao.LikeDAOHibernate;
 import model.dao.ReviewDAOHibernate;
 
 @Controller
+@RequestMapping(path= {"/reviewstatus.controller"})
 public class ChangeReivewStatusController {
 	@Autowired
 	private ReviewDAOHibernate reviewDAOHibernate = null;
@@ -25,7 +28,7 @@ public class ChangeReivewStatusController {
 	@Autowired
 	private ApplicationContext context;
 
-	@RequestMapping(method = { RequestMethod.GET },path="/reviewstatus.controller")
+	@RequestMapping(method = { RequestMethod.GET })
 	@ResponseBody
 	public void doGet(String status,String reviewId, Model model) {
 		
@@ -42,5 +45,13 @@ public class ChangeReivewStatusController {
 			reviewDAOHibernate.changeStatus(Integer.valueOf(reviewId));
 		}
 //		return "1";
+	}
+	
+	@RequestMapping(method = { RequestMethod.POST})
+	public ModelAndView doPost(Integer reviewId,Integer memId, Model model) {
+		System.out.println(memId);
+		reviewDAOHibernate.changeStatus(reviewId);
+		String url= "/bookstore/Showreview.controller?memId=" + memId+ "";
+		return new ModelAndView( new RedirectView(url));
 	}
 }

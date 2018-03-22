@@ -9,11 +9,11 @@
 
     
 	
-    
+   <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/theme2/css/style.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/web/assets/mobirise-icons/mobirise-icons.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/tether/tether.min.css">
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/vendor/bootstrap.min.css">
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/assets3/bootstrap/css/bootstrap-grid.min.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/assets3/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/bootstrap/css/bootstrap-grid.min.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/bootstrap/css/bootstrap-reboot.min.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/theme/css/style.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/mobirise/css/mbr-additional2.css" type="text/css">
@@ -57,7 +57,7 @@
         <div class="container pt-4 mt-2">
             <div class="media-container-row">
                 <div class="media-block" style="width: 30%;">
-                    <h2 class="mbr-section-title pb-3 align-left mbr-fonts-style display-2">${member.userName}</h2>
+                    <h2 class="mbr-section-title pb-3 align-left mbr-fonts-style display-2">${member.nickName}</h2>
                     <h3 class="mbr-section-subtitle pb-5 align-left mbr-fonts-style display-5">${member.description}</h3>
                     <div class="mbr-figure">
                         <img src="${pageContext.request.contextPath}/getImage?id=${member.memId}&type=MEMBER" >
@@ -74,7 +74,7 @@
                                     </h3>
                                 </div>
                                 <div class="card-text">
-                                    <h4 class="mbr-content-title mbr-bold mbr-fonts-style display-7">成為${member.userName}粉絲</h4>
+                                    <h4 class="mbr-content-title mbr-bold mbr-fonts-style display-7">成為${member.nickName}粉絲</h4>
                                     <p class="mbr-content-text mbr-fonts-style display-7">
                                                                                         
                                     </p>
@@ -82,33 +82,18 @@
                             </div>
                         </div>
                        
-                        <div class="card px-6 align-left col-md-6">
-                            <div class="panel-item p-3">
-                                <div class="card-img pb-3">
-                                    <a href="http://www.books.com.tw/products/0010776691?loc=P_004_1_002"><span class="mbr-iconfont pr-2 mbri-edit" style="font-size: 60px;" media-simple="true"></span></a>
-                                    <h3 class="count py-3 mbr-fonts-style display-2">
-                                        100
-                                    </h3>
-                                </div>
-                                <div class="card-text">
-                                    <h4 class="mbr-content-title mbr-bold mbr-fonts-style display-7">${member.userName}的書評</h4>
-                                    <p class="mbr-content-text mbr-fonts-style display-7">
-                                                                                 
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
+                        
                        <div class="card px-3 align-left col-12 col-md-6">
                             <div class="panel-item p-3">
                                 <div class="card-img pb-3">
                                     <span class="mbr-iconfont pr-2 mbri-update" style="font-size: 50px;" media-simple="true"></span>
                                     <h3 class="count py-3 mbr-fonts-style display-2">
-                                        5
+                                        0
                                     </h3>
                                 </div>
                                 <div class="card-text">
                                     <h4 class="mbr-content-title mbr-bold mbr-fonts-style display-7">
-                                                                           ${member.userName}的小圈圈
+                                                                           ${member.nickName}的小圈圈
                                     </h4>
                                     <p class="mbr-content-text mbr-fonts-style display-7">
                                                                                               
@@ -116,19 +101,34 @@
                                 </div>
                             </div>
                         </div>
-
+<div class="card px-6 align-left col-md-6">
+                            <div class="panel-item p-3">
+                                <div class="card-img pb-3">
+                                    <a href="http://www.books.com.tw/products/0010776691?loc=P_004_1_002"><span class="mbr-iconfont pr-2 mbri-edit" style="font-size: 60px;" media-simple="true"></span></a>
+                                    <h3 class="count py-3 mbr-fonts-style display-2">
+                                        5
+                                    </h3>
+                                </div>
+                                <div class="card-text">
+                                    <h4 class="mbr-content-title mbr-bold mbr-fonts-style display-7">${member.nickName}的書評</h4>
+                                    <p class="mbr-content-text mbr-fonts-style display-7">
+                                                                                 
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
 
 		<div class="card px-3 align-left col-12 col-md-6">
                             <div class="panel-item p-3">
                                 <div class="card-img pb-3">
                                     <span class="mbr-iconfont pr-2 mbri-users" style="font-size: 60px;" media-simple="true"></span>
                                     <h3 class="count py-3 mbr-fonts-style display-2">
-                                        50
+                                        0
                                     </h3>
                                 </div>
                                 <div class="card-texts">
                                     <h4 class="mbr-content-title mbr-bold mbr-fonts-style display-7">
-                                                                                    ${member.userName}的追蹤者
+                                                                                    ${member.nickName}的追蹤者
                                     </h4>
                                     <p class="mbr-content-text mbr-fonts-style display-7">
                                                                                  
@@ -156,7 +156,7 @@
                             <div class="card-header" role="tab" id="headingOne">
                                 <a role="button" class="collapsed panel-title text-black" data-toggle="collapse" data-parent="#bootstrap-accordion_1" data-core="" href="#collapse1_1" aria-expanded="false" aria-controls="collapse1">
                                     <h4 class="mbr-fonts-style display-5">
-                                        <span class="sign mbr-iconfont mbri-arrow-down inactive"></span>${member.userName}的書庫
+                                        <span class="sign mbr-iconfont mbri-arrow-down inactive"></span>書庫
                                     </h4>
                                 </a>
                             </div>
@@ -188,7 +188,7 @@
                             <div class="card-header" role="tab" id="headingTwo">
                                 <a role="button" class="collapsed panel-title text-black" data-toggle="collapse" data-parent="#bootstrap-accordion_1" data-core="" href="#collapse2_1" aria-expanded="false" aria-controls="collapse2">
                                     <h4 class="mbr-fonts-style mbr-fonts-style display-5">
-                                        <span class="sign mbr-iconfont mbri-arrow-down inactive"></span> ${member.userName}的狀態
+                                        <span class="sign mbr-iconfont mbri-arrow-down inactive"></span> 狀態
                                     </h4>
                                 </a>
 
@@ -196,7 +196,12 @@
                             <div id="collapse2_1" class="panel-collapse noScroll collapse" role="tabpanel" aria-labelledby="headingTwo">
                                 <div class="panel-body p-4">
                                     <p class="mbr-fonts-style panel-text display-7">
-                                                                                正在讀
+                                
+				           <a href="${pageContext.request.contextPath}/ShowBnmae.controller?Bstatus=值得買">#值得買 </a>
+				           <a href="#" onClick="showname()">#必看 </a>
+				              
+                                    
+                                   
                                     </p>
                                 </div>
                             </div>
@@ -304,6 +309,7 @@
     <script src="${pageContext.request.contextPath}/assets/theme/js/script.js"></script>
 <script>
 
+
 $(document).ready(function() {
 	//使用者會員下拉式選單
 	//使用者會員memID=1
@@ -345,10 +351,20 @@ $(document).ready(function() {
 		  
 	
 	});
-	
-	
-	
+
 })
+//選擇多本書
+checkbox=function(){
+    var datas = $('form[name="checkboxmyForm"]').serializeArray() ;
+	console.log(datas);
+    var names = $("input[type='checkbox']:checked");
+	var i=0;
+	for(;i<names.length;i++){
+	//alert(names[i].value); //抓書的質
+	$.post("${pageContext.request.contextPath}/InsertCollection.controller",{memID:datas[0].value,BCID:datas[1].value,BookId:names[i].value},function(data) {
+	})}
+	alert("新增成功");
+}
 //隱藏顯示按鈕
 setup=function(){
 	//alert("123");
@@ -360,71 +376,6 @@ setup=function(){
 	$("button").toggle();
 	
 }
-Deletecheckbox=function(){
-	//alert("123");
-	var datas = $('form[name="checkboxmyForm"]').serializeArray() ;
-	//console.log(datas);
-	var names = $("input[type='checkbox']:checked");
-	var i=0;
-	for(;i<names.length;i++){
-		alert(names[i].value); 
-	$.post("${pageContext.request.contextPath}/deleteCollection.controller",{memID:datas[0].value,BookId:names[i].value},function(data) {
-	})
-	}
-	alert("刪除成功");
-	window.location.reload();
-}
-//選擇多本書
-checkbox=function(){
-    var datas = $('form[name="checkboxmyForm"]').serializeArray() ;
-	//console.log(datas);
-    var names = $("input[type='checkbox']:checked");
-	var i=0;
-	for(;i<names.length;i++){
-	//alert(names[i].value); //抓書的質
-	$.post("${pageContext.request.contextPath}/UpdateBBkcase.controller",{memID:datas[0].value,BCID:datas[1].value,BookId:names[i].value},function(data) {
-	})
-	}
-	alert("新增成功");
-}
-//更新書放到書庫
-Updatename=function(){
-	var datas = $('form[name="myForm"]').serialize();
-	
-	$.post("${pageContext.request.contextPath}/UpdatebookcaseName.controller",datas,function(data) {
-		
-		 })
-		 alert("更新成功");
-	window.location.reload();
-
-}
-//新增書庫
-Insert=function(){
-	var datas = $('form[name="myForm"]').serialize();
-	$.post("${pageContext.request.contextPath}/bookcaseInsert.controller",datas,function(data){ 		    		
-
-  	});
-	
-	alert("新增成功");
-	window.location.reload();
-}
-//刪除書庫
-Delete=function(a){
-	//alert(a);
-	$.get('${pageContext.request.contextPath}/bookcasedelete.controller',{BCID:a})
-          alert("刪除成功");
-	window.location.reload();
-	
-}
-//更新書庫名
-Update=function(a){
-	//alert(a);
-	$.getJSON("${pageContext.request.contextPath}/selectbookcaseName.controller",{'BCID': a},function(data) {
-		$("#BCID").val(data.BCID); 
-		$("#BCname").val(data.BCname); 
-		
-		 })
-}
 
 //顯示 此網頁的會員資料
 MyFunction=function(a){
@@ -434,11 +385,16 @@ MyFunction=function(a){
 				}
 	
 //這裡修改此網頁的會員memID=
-	$.getJSON("${pageContext.request.contextPath}/selectcollectionBookId.controller?memID=${LoginOK.memId}&BCID="+a+"",function(data) {
+	$.getJSON("${pageContext.request.contextPath}/selectcollectionBookId.controller?memID=${member.memId}&BCID="+a+"",function(data) {
 		//console.log(data);
 		 var tb=$('#show');
 		      $.each(data,function(idx,product){
-			   //alert(product.bookId);
+			   //alert(product);
+			    var eleA2= document.createElement("a");//超連結
+			   var eleDiv5 = document.createElement("div")
+				eleDiv5.append(document.createTextNode("#"+product.Bstatus));
+			   eleA2.setAttribute("href","");
+			   eleA2.append(eleDiv5)
 			  $.getJSON("${pageContext.request.contextPath}/selectbook.controller?bookId="+product.bookId,function(test) {
 				  var docFrag = document.createDocumentFragment();
 				  var eleImg = document.createElement("img");
@@ -469,7 +425,7 @@ MyFunction=function(a){
 				  //eleSpan2.appendChild(eleA);
 				  eleSpan2.append(eleinput);
 				  eleSpan2.appendChild(document.createTextNode(test.title));
-				  
+				  eleSpan2.append(eleA2);
 			
 				  eleDiv3.append(eleA);
 				  eleA.append(eleImg);
@@ -493,19 +449,34 @@ MyFunction=function(a){
 	
 	
                }
-//此網頁會員全部的書
-$(document).ready(function() {
+
+showname=function() {
 	myDiv = document.getElementById("show");
 	while(myDiv.hasChildNodes()){
 		myDiv.removeChild(myDiv.lastChild);
 				}
    //這裡修改 此網頁會員 memID=	
-	         $.getJSON("${pageContext.request.contextPath}/selectallbook.controller?memID=${member.memId}",function(data) {
+	         $.getJSON("${pageContext.request.contextPath}/ShowBnmae.controller?Bstatus=必看",function(data) {
 		     //console.log(data);
 		
 		     var tb=$('#show');
 		       $.each(data,function(idx,product){
 			   //alert(product.bookId);
+			    var eleA2= document.createElement("a");//超連結
+			    var eleDiv5 = document.createElement("div")
+			    $.getJSON("${pageContext.request.contextPath}/selectbookcaseName.controller?BCID="+product.BCID,function(data) {
+			    	var span8 = document.createElement("span");
+			    	span8.append(document.createTextNode("#"+data.BCname));
+			    	eleA2.append(span8);
+			    })
+			    
+				
+				eleDiv5.append(document.createTextNode("#"+product.Bstatus));
+			    eleA2.setAttribute("href","");
+			    eleA2.append(eleDiv5);
+			  
+			    
+			    
 			  $.getJSON("${pageContext.request.contextPath}/selectbook.controller?bookId="+product.bookId,function(test) {
 				  //alert(test); 
 				  //console.log(test.bookId);
@@ -536,9 +507,13 @@ $(document).ready(function() {
 				  eleA.setAttribute("href","${pageContext.request.contextPath}/bookPages.controller?bookId="+test.bookId);
 				  //eleSpan2.className="card-title";
 				  //eleSpan2.appendChild(eleA);
+				  
+				
+				  
+				  
 				  eleSpan2.append(eleinput);
 				  eleSpan2.appendChild(document.createTextNode(test.title));
-				  
+				  eleSpan2.append(eleA2);
 			
 				  eleDiv3.append(eleA);
 				  eleA.append(eleImg);
@@ -552,7 +527,93 @@ $(document).ready(function() {
 				 
 				 
 			});
-			  
+			 
+		  
+			});
+	  
+	});
+	
+
+}
+
+//此網頁會員全部的書
+$(document).ready(function() {
+	myDiv = document.getElementById("show");
+	while(myDiv.hasChildNodes()){
+		myDiv.removeChild(myDiv.lastChild);
+				}
+   //這裡修改 此網頁會員 memID=	
+	         $.getJSON("${pageContext.request.contextPath}/selectallbook.controller?memID=${member.memId}",function(data) {
+		     //console.log(data);
+		
+		     var tb=$('#show');
+		       $.each(data,function(idx,product){
+		    	   var eleA2= document.createElement("a");//超連結
+				    var eleDiv5 = document.createElement("div")
+				    $.getJSON("${pageContext.request.contextPath}/selectbookcaseName.controller?BCID="+product.BCID,function(data) {
+				    	var span8 = document.createElement("span");
+				    	span8.append(document.createTextNode("#"+data.BCname));
+				    	eleA2.append(span8);
+				    	
+				    })
+			   //alert(product.Bstatus);
+			    var eleA2= document.createElement("a");//超連結
+			   var eleDiv5 = document.createElement("div")
+				eleDiv5.append(document.createTextNode("#"+product.Bstatus));
+			   
+			   eleA2.setAttribute("href","");
+			   eleA2.append(eleDiv5)
+			  $.getJSON("${pageContext.request.contextPath}/selectbook.controller?bookId="+product.bookId,function(test) {
+				  //alert(test); 
+				  //console.log(test.bookId);
+				  var docFrag = document.createDocumentFragment();
+				  var eleImg = document.createElement("img");
+				  $(eleImg).attr("src","${pageContext.request.contextPath}/bookimg.controller?bookId="+test.bookId);          
+				  $(eleImg).css("height","100");
+				  $(eleImg).css("width","100");
+				  $(eleImg).css("margin","auto");
+				  $(eleImg).className="card-img-top";
+				  var eleDiv = document.createElement("div");
+				  var eleDiv1 = document.createElement("div");//外
+				  var eleDiv2 = document.createElement("div");//內
+				  var eleDiv3 = document.createElement("div");//內
+				  //col-lg-3 col-md-4 col-sm-6
+				  eleDiv.className="col-md-4  portfolio-item"
+				  eleDiv1.className="card h-100";
+				  eleDiv2.className="card-body"
+				  var eleSpan2= document.createElement("span");//內容
+				  var eleA= document.createElement("a");//超連結
+				  var eleinput = document.createElement("input");
+				  eleinput.setAttribute("type","checkbox");
+				  $(eleinput).css("display","none");
+				  
+				
+				  eleinput.setAttribute("name","bookId")
+				  eleinput.setAttribute("value",test.bookId)
+				  eleA.setAttribute("href","${pageContext.request.contextPath}/bookPages.controller?bookId="+test.bookId);
+				  //eleSpan2.className="card-title";
+				  //eleSpan2.appendChild(eleA);
+				  
+				
+				  
+				  
+				  eleSpan2.append(eleinput);
+				  eleSpan2.appendChild(document.createTextNode(test.title));
+				  eleSpan2.append(eleA2);
+			
+				  eleDiv3.append(eleA);
+				  eleA.append(eleImg);
+				  eleDiv2.append(eleDiv3);
+				  eleDiv2.append(eleSpan2);				 
+				  eleDiv1.append(eleDiv2);				  
+				  eleDiv.append(eleDiv1);  
+				  docFrag.append(eleDiv);
+				  tb.append(docFrag); 
+				  
+				 
+				 
+			});
+			 
 		  
 			});
 	  

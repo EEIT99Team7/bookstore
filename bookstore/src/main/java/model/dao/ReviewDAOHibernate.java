@@ -33,14 +33,14 @@ public class ReviewDAOHibernate {
 
 	// 單一書評(memID, bookId)
 	public ReviewBean select(Integer memID, Integer bookId) {
-		return this.getSession().createQuery("From ReviewBean where bookId ='" + bookId + "' and memId='" + memID + "'",
+		return this.getSession().createQuery("From ReviewBean where bookId ='" + bookId + "' and memID='" + memID + "'",
 				ReviewBean.class).uniqueResult();
 	}
 
 	// 會員評過書評
 	public List<Object[]> selectByMemId(Integer memID) {
 		return (List<Object[]>) (this.getSession().createQuery(
-				"select p.title,r.content,r.make,r.score From ReviewBean r JOIN ProductBean p ON r.bookId =p.bookId where r.memId ='"
+				"select p.title,r.content,r.make,r.score,r.reviewId,r.statusNo From ReviewBean r JOIN ProductBean p ON r.bookId =p.bookId where r.statusNo = true and r.memID ='"
 						+ memID + "'",
 				Object[].class).list());
 	}
@@ -81,7 +81,7 @@ public class ReviewDAOHibernate {
 	}
 
 	// 修改書評
-	public ReviewBean update(Integer reviewId, String content, java.util.Date make) {
+	public ReviewBean update(Integer reviewId, String content) {
 		ReviewBean result = this.getSession().get(ReviewBean.class, reviewId);
 		if (result != null) {
 			result.setContent(content);

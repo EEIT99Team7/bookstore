@@ -60,10 +60,13 @@ public class CustomerServiceDao {
 		return bean;
 	}
 	
+
+	
 	public void addMessage(CustomerServiceBean bean) {
 		if (bean != null) {
 			this.getSession().saveOrUpdate(bean);
 		}
 	}
+
 	
 }

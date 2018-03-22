@@ -141,9 +141,9 @@ request.setAttribute("stTelUTF8", stTelUTF8);
 				</TR>
 
 				<TR height='20'>
-					<TD style="text-align: left; font-size: 11pt;">運送方式： <input
+					<TD style="text-align: left; font-size: 11pt;">收貨方式： <input
 						type="radio" name="" id="productDelivery" value="" checked><label
-						for="productDelivery">宅配</label>
+						for="productDelivery">超商取貨</label>
 					</TD>
 				</TR>
 
@@ -157,29 +157,6 @@ request.setAttribute("stTelUTF8", stTelUTF8);
 						 <span id="storechoicespan"></span>
 					</TD>
 				</TR>
-
-				<TR height='20'>
-					<TD style="text-align: left; font-size: 15pt;">會員資料：</TD>
-				</TR>
-
-				<TR height='20'>
-					<TD style="text-align: left; font-size: 15pt;">姓名：<input
-						type="text" class="form-control" name="memberName" id="memberName"
-						placeholder="${LoginOK.userName}" readonly></TD>
-				</TR>
-
-				<TR height='20'>
-					<TD style="text-align: left; font-size: 15pt;">地址：<input
-						type="text" class="form-control" name="memberName" id="memberName"
-						placeholder="${LoginOK.addr}" readonly></TD>
-				</TR>
-
-				<TR height='20'>
-					<TD style="text-align: left; font-size: 15pt;">電話：<input
-						type="text" class="form-control" name="memberName" id="memberName"
-						placeholder="${LoginOK.phone}" readonly></TD>
-				</TR>
-
 
 				<TR height='20'>
 					<TD style="text-align: left; font-size: 15pt;">收件人資料：<input

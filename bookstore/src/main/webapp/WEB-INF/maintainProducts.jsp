@@ -69,9 +69,7 @@
 	                  <h5>${bookBean.price}</h5>
 					  <div class="card-text crop-text-4 text-justify">${bookBean.content}</div>
 	                </div>
-	                <div class="card-footer">	                
-	                  <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
-	                </div>
+
 	              </div>
 	            </div>
 		  
