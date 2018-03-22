@@ -62,7 +62,7 @@ public class CustomerServiceDao {
 	
 	public void addMessage(CustomerServiceBean bean) {
 		if (bean != null) {
-			this.getSession().save(bean);
+			this.getSession().saveOrUpdate(bean);
 		}
 	}
 	
