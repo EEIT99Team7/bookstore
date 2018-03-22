@@ -10,7 +10,6 @@
     
 		<!-- 套用此css會影響至bootstrap原先按鈕樣式及整體版面的些許字形 ex:大小、顏色、字體-->
 	<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/theme2/css/style.css">
-    
     <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/web/assets/mobirise-icons/mobirise-icons.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/tether/tether.min.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/assets3/bootstrap/css/bootstrap.min.css">
@@ -132,7 +131,7 @@
                         <div class="card px-3 align-left col-12 col-md-6">
                             <div class="panel-item p-3">
                                 <div class="card-img pb-3">
-                                    <a href=""><span class="mbr-iconfont pr-2 mbri-edit" style="font-size: 60px;" media-simple="true"></span></a>
+                                    <a onclick="showReview()"><span class="mbr-iconfont pr-2 mbri-edit" style="font-size: 60px;" media-simple="true"></span></a>
                                     <h3 class="count py-3 mbr-fonts-style display-2">
                                         
                                     </h3>
@@ -408,6 +407,18 @@ MyFunction=function(a){
 		 var tb=$('#show');
 		      $.each(data,function(idx,product){
 			   //alert(product.bookId);
+			    $.getJSON("${pageContext.request.contextPath}/selectbookcaseName.controller?BCID="+product.BCID,function(datas) {
+			    	 var eleDiv5 = document.createElement("div")
+			    	
+				    	eleDiv5.append(document.createTextNode("#"+datas.BCname));
+			    	 var eleA2= document.createElement("a");//超連結
+			    	 eleA2.setAttribute("href","");
+			    	 eleA2.append(eleDiv5);
+			    	 
+			  
+            
+				
+			  
 			  $.getJSON("${pageContext.request.contextPath}/selectbook.controller?bookId="+product.bookId,function(test) {
 				  var docFrag = document.createDocumentFragment();
 				  var eleImg = document.createElement("img");
@@ -438,7 +449,7 @@ MyFunction=function(a){
 				  //eleSpan2.appendChild(eleA);
 				  eleSpan2.append(eleinput);
 				  eleSpan2.appendChild(document.createTextNode(test.title));
-				  
+				  eleSpan2.append(eleA2);
 			
 				  eleDiv3.append(eleA);
 				  eleA.append(eleImg);
@@ -452,7 +463,7 @@ MyFunction=function(a){
 				  
 			});
 			  
-			  
+			    })	  
 			  
 			  
 			});
@@ -474,7 +485,18 @@ $(document).ready(function() {
 		
 		     var tb=$('#show');
 		       $.each(data,function(idx,product){
-			   //alert(product.bookId);
+			   //alert(product);
+			 //console.log(product);
+			  
+			    	
+			    var eleA2= document.createElement("a");//超連結
+			   var eleDiv5 = document.createElement("div")
+				eleDiv5.append(document.createTextNode("#"));
+			   eleA2.setAttribute("href","");
+			   eleA2.append(eleDiv5);
+			  
+			  
+			   
 			  $.getJSON("${pageContext.request.contextPath}/selectbook.controller?bookId="+product.bookId,function(test) {
 				  //alert(test); 
 				  //console.log(test.bookId);
@@ -507,7 +529,7 @@ $(document).ready(function() {
 				  //eleSpan2.appendChild(eleA);
 				  eleSpan2.append(eleinput);
 				  eleSpan2.appendChild(document.createTextNode(test.title));
-				  
+				  eleSpan2.append(eleA2);
 			
 				  eleDiv3.append(eleA);
 				  eleA.append(eleImg);
@@ -530,7 +552,9 @@ $(document).ready(function() {
 
 }) 
 
-
+function showReview(){
+	window.location.href="${pageContext.request.contextPath}/Showreview.controller?memId=${LoginOK.memId}";  
+}
 </script>
 </body>
 </html>

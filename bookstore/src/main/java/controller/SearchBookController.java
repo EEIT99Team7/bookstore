@@ -61,7 +61,7 @@ public class SearchBookController {
 					model.addAttribute("bookBeans", result);
 					model.addAttribute("searchReasultNumber", result.size());
 				} else {
-					// 沒撈到書籍
+				// 沒撈到書籍
 					model.addAttribute("searchReasultNumber", 0);
 					model.addAttribute("searchResult", "沒有與 " + bookName + " 名稱相符合的相關書籍");
 				}

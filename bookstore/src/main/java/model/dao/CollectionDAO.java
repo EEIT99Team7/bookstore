@@ -119,5 +119,11 @@ public class CollectionDAO {
 				
 
 			}
+			
+			public List<CollectionBean> selectBnmae(String Bstatus) {
+				return  this.getSession().createQuery(
+						"from CollectionBean where Bstatus=?",CollectionBean.class)
+				.setParameter(0,Bstatus).list();			
+			}	
 
 }

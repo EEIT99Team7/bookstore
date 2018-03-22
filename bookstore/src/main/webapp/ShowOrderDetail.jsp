@@ -40,9 +40,14 @@
 				<td colspan="7">
 				<table border='0'>
 					<tr>
-						<td align="Left" width="500px">出貨地址:${OrderBean.shippingAddress}</td>
-						<td align="center" width="200px">訂購日期:${OrderBean.orderDateStr}</td>		
-						<td align="right" width="150px">訂單編號:${OrderBean.orderNo}</td>
+						<td align="Left" width="400px">收件人姓名:${OrderBean.customer}</td>
+						<td align="center" width="400px">收件人電話:${OrderBean.phone}</td>
+						<td align="center" width="400px">取貨方式:${OrderBean.payment}</td>		
+					</tr>
+					<tr>
+						<td align="Left" width="500px">收貨地址:${OrderBean.shippingAddress}</td>
+						<td align="center" width="300px">訂購日期:${OrderBean.orderDateStr}</td>		
+						<td align="center" width="400px">訂單編號:${OrderBean.orderNo}</td>
 					</tr>
 				</table>
 				</td>

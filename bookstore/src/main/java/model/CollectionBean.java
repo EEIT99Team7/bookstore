@@ -17,8 +17,8 @@ public class CollectionBean {
 	private	 Integer memID ;
 	private	 Integer bookId  ;
 	private	 Integer BCID;
-	@Transient
-	private	 Integer Bstatus;
+	
+	private	 String Bstatus;
 	
 	public CollectionBean() {
 		
@@ -67,10 +67,10 @@ public class CollectionBean {
 	public void setBCID(Integer bCID) {
 		BCID = bCID;
 	}
-	public Integer getBstatus() {
+	public String getBstatus() {
 		return Bstatus;
 	}
-	public void setBstatus(Integer bstatus) {
+	public void setBstatus(String bstatus) {
 		Bstatus = bstatus;
 	}
 
